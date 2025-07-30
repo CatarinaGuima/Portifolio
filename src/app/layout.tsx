@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
 import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
-  title: "Catarina Guimarães | Desenvolvedora",
+  title: " Portifólio | Catarina Guimarães",
   description: "Portfólio pessoal de Catarina Guimarães",
 };
 

@@ -1,7 +1,7 @@
-import HeroSection from '@/components/Hero';
-import Navbar from '@/components/Navbar';
-import Sidebar from '@/components/Sidebar';
-import SocialLinks from '@/components/SocialLinks';
+import HeroSection from '@/components/ui/Hero';
+import Navbar from '@/components/ui/Navbar';
+import Sidebar from '@/components/ui/Sidebar/index';
+import SocialLinks from '@/components/ui/SocialLinks';
 
 export default function Home() {
   return (
@@ -12,4 +12,4 @@ export default function Home() {
       <SocialLinks />
     </main>
   )
-}
+} 
