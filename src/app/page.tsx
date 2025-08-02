@@ -1,15 +1,17 @@
-import HeroSection from '@/components/ui/Hero';
-import Navbar from '@/components/ui/Navbar';
-import Sidebar from '@/components/ui/Sidebar/index';
-import SocialLinks from '@/components/ui/SocialLinks';
+import Hero from "@/components/ui/Hero";
+import About from "@/components/ui/About";
+import Skills from "@/components/ui/Skills";
+import Projects from "@/components/ui/Projects";
+import Contact from "@/components/ui/Contact";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main className="relative min-h-screen bg-white dark:bg-black text-gray-800 dark:text-white font-nunito">
-      <Navbar />
-      <Sidebar />
-      <HeroSection />
-      <SocialLinks />
-    </main>
-  )
-} 
+    <>
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Contact />
+    </>
+  );
+}

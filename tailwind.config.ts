@@ -1,7 +1,12 @@
 import type { Config } from "tailwindcss";
+
 const config: Config = {
   darkMode: "class",
-  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
+  content: [
+    "./app/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}", // opcional, dependendo da estrutura
+  ],
   theme: {
     extend: {
       colors: {
@@ -10,9 +15,11 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["Nunito", "sans-serif"],
+        logo: ["'Monoton'", "cursive"], 
       },
     },
   },
   plugins: [],
 };
+
 export default config;
