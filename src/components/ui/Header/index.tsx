@@ -1,16 +1,14 @@
 "use client";
-
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 import ThemeToggle from "../ThemeToggle";
 import Image from "next/image";
 import lightLogo from "@/assets/images/lightLogo.png";
 import darkLogo from "@/assets/images/darkLogo.png";
-import { Monoton } from "next/font/google";
+import { Archivo_Black } from "next/font/google";
 
-const monoton = Monoton({
-  weight: "400",
-  subsets: ["latin"],
+const archivo = Archivo_Black({
+  weight:  "400",
 });
 
 const links = [
@@ -21,9 +19,10 @@ const links = [
 ];
 
 export default function Header() {
-  const { theme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
 
+  // Adicione um estado para forçar a atualização
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -31,24 +30,21 @@ export default function Header() {
 
   if (!mounted) {
     return (
-      <header className="sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-sm border-b dark:border-white/10 transition-all duration-300">
-        <div className="container mx-auto flex items-center justify-between px-4">
-          <div className="flex items-center space-x-4 py-4">
-            <div className="w-10 h-10" /> {/* Espaço reservado para a logo */}
-          </div>
-          <ThemeToggle />
+      <header className="sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-sm  dark:border-white/10">
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+          <div className="w-10 h-10 bg-gray-200 dark:bg-gray-800 rounded animate-pulse" />
+          <div className="w-6 h-6 bg-gray-200 dark:bg-gray-800 rounded animate-pulse" />
         </div>
       </header>
     );
   }
 
-  const isDark = resolvedTheme === "dark";
-  const logo = isDark ? darkLogo : lightLogo;
+  const logo = resolvedTheme === "dark" ? lightLogo : darkLogo;
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-sm border-b dark:border-white/10 transition-all duration-300">
+    <header className="sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md dark:border-white/10 transition-all duration-300">
       <div className="container mx-auto flex items-center justify-between px-4">
-        <div className="flex items-center space-x-4 py-4">
+        <div className="flex items-center space-x-4 py-4 ml-[4rem]">
           <Image
             src={logo}
             alt="Logo"
@@ -56,29 +52,29 @@ export default function Header() {
             height={40}
             className="object-contain drop-shadow transition-all duration-300"
             priority
+            key={resolvedTheme} // Isso força o recarregamento da imagem quando o tema muda
           />
 
           <span
-            className={`${monoton.className} text-lg font-black dark:text-white`}
+            className={`${archivo.className}  text-transparent bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] bg-clip-text text-2xl font-bold `}
           >
             Catarina Guimarães
           </span>
         </div>
 
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="flex items-center space-x-8">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="font-sans text-sm hover:text-primary dark:hover:text-primary transition-colors dark:text-white/80"
+              className="hover:text-[#8f00ff] transition-colors duration-200 font-medium text-md"
             >
               {link.label}
             </a>
           ))}
-          <ThemeToggle />
         </nav>
 
-        <div className="md:hidden">
+        <div className="">
           <ThemeToggle />
         </div>
       </div>

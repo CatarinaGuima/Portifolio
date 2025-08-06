@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;500;600;700&display=swap");
 
 /* Tailwind v4 core */
 @import "tailwindcss";
@@ -8,9 +8,6 @@
 
 /* ------- Design tokens (claro por padrão) ------- */
 :root {
-  --font-sans: "Nunito", sans-serif;
-  --font-logo: "Monoton", cursive;
-
   --radius: 0.625rem;
 
   /* Paleta base clara (OKLCH) */
@@ -160,17 +157,7 @@
 }
 html,
 body {
-
-  background-image: url("https://responsively.app/_next/static/media/background-hero.f7320010.svg");
-  color: transparent; 
-  object-fit: cover; 
-  object-position: center center;
-  width: 100%;
-  height: ;
-
-}
-body {
-  @apply  bg-white text-black dark:bg-black dark:text-white transition-colors;
+  @apply text-black dark:bg-black dark:text-white transition-colors;
 }
 @layer base {
   * {

@@ -22,7 +22,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className={nunito.className}>
+      <body
+        className={`${nunito.className} min-h-screen bg-cover bg-center bg-no-repeat transition-colors`}
+        style={{
+          backgroundImage: "url('/background-hero.svg')"
+        }}
+      >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           {children}

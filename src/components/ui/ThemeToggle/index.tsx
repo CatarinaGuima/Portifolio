@@ -1,33 +1,56 @@
 "use client";
+
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { clsx } from "clsx";
+import { Switch } from "@/components/ui/Switch";
+import { FiSun, FiMoon } from "react-icons/fi";
 
 export default function ThemeToggle() {
-  const [dark, setDark] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const stored = localStorage.getItem("theme");
-    const useDark = stored ? stored === "dark" : isDark;
-    document.documentElement.classList.toggle("dark", useDark);
-    setDark(useDark);
+    setMounted(true);
   }, []);
 
-  const toggle = () => {
-    const next = !dark;
-    setDark(next);
-    document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("theme", next ? "dark" : "light");
-  };
+  if (!mounted) {
+    return (
+      <div className="w-12 h-6 bg-gray-200 rounded-full animate-pulse" />
+    );
+  }
+
+  const isDark = resolvedTheme === "dark";
 
   return (
-    <button
-      onClick={toggle}
-      aria-label="Alternar tema"
-      className={clsx("btn btn-ghost")}
-      title="Alternar tema"
-    >
-      {dark ? "🌙" : "☀️"}
-    </button>
+    <div className="flex items-center gap-2 mr-[4rem]">
+      <FiSun 
+        className={`w-4 h-4 transition-opacity ${!isDark ? "opacity-100 text-yellow-500" : "opacity-40"}`} 
+      />
+      
+      <Switch
+        checked={isDark}
+        onCheckedChange={() => setTheme(isDark ? "light" : "dark")}
+        className="relative w-12 h-6 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors duration-300 cursor-pointer"
+        aria-label="Alternar tema claro/escuro"
+      >
+        <span
+          className={`
+            absolute top-[2px] left-[2px] w-5 h-5 rounded-full bg-white dark:bg-gray-900 flex items-center justify-center
+            transition-transform duration-300 shadow-md
+            ${isDark ? "translate-x-6" : "translate-x-0"}
+          `}
+        >
+          {isDark ? (
+            <FiMoon className="w-3 h-3 text-blue-400" />
+          ) : (
+            <FiSun className="w-3 h-3 text-yellow-500" />
+          )}
+        </span>
+      </Switch>
+      
+      <FiMoon 
+        className={`w-4 h-4 transition-opacity ${isDark ? "opacity-100 text-blue-400" : "opacity-40"}`} 
+      />
+    </div>
   );
 }
