@@ -51,7 +51,7 @@ export default function Header() {
           />
 
           <span
-            className={`${archivo.className}  text-transparent bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] bg-clip-text text-2xl font-bold `}
+            className={`${archivo.className} text-transparent bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] bg-clip-text text-2xl font-bold `}
           >
             CG
           </span>

@@ -157,6 +157,7 @@
 }
 html,
 body {
+  scroll-behavior: smooth;
   @apply text-black dark:bg-black dark:text-white transition-colors;
 }
 @layer base {
