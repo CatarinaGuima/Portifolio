@@ -1,10 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
 import ThemeToggle from "../ThemeToggle";
 import Image from "next/image";
-import lightLogo from "@/assets/images/lightLogo.png";
-import darkLogo from "@/assets/images/darkLogo.png";
+import logo from "@/assets/images/logo.png";
 import { Archivo_Black } from "next/font/google";
 
 const archivo = Archivo_Black({
@@ -19,8 +17,7 @@ const links = [
 ];
 
 export default function Header() {
-  const { resolvedTheme } = useTheme();
-
+  
   // Adicione um estado para forçar a atualização
   const [mounted, setMounted] = useState(false);
 
@@ -39,8 +36,7 @@ export default function Header() {
     );
   }
 
-  const logo = resolvedTheme === "dark" ? lightLogo : darkLogo;
-
+  
   return (
     <header className="sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md dark:border-white/10 transition-all duration-300">
       <div className="container mx-auto flex items-center justify-between px-4">
@@ -52,13 +48,12 @@ export default function Header() {
             height={40}
             className="object-contain drop-shadow transition-all duration-300"
             priority
-            key={resolvedTheme} // Isso força o recarregamento da imagem quando o tema muda
           />
 
           <span
             className={`${archivo.className}  text-transparent bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] bg-clip-text text-2xl font-bold `}
           >
-            Catarina Guimarães
+            CG
           </span>
         </div>
 
