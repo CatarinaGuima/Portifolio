@@ -2,9 +2,6 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
-import Header from "@/components/ui/Header";
-import Footer from "@/components/ui/Footer";
 import { AppLoader } from "@/components/ui/Loading/loader";
 
 export const metadata: Metadata = {
@@ -24,17 +21,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className={`${nunito.className} min-h-screen bg-cover bg-center bg-no-repeat`}
-        style={{
-          backgroundImage: "url('/background-hero.svg')"
-        }}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <body className={`${nunito.className} min-h-screen bg-cover bg-center bg-no-repeat`}> 
           <AppLoader>
-            <Header />
             {children}
-            <Footer />
           </AppLoader>
-        </ThemeProvider>
       </body>
     </html>
   );
