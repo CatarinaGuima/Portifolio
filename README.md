@@ -5,8 +5,8 @@ Aqui você encontrará meus principais projetos, minhas habilidades técnicas e 
 
 ---
 
-## 🌐 Deploy
-🔗 Acesse meu portfólio online:  
+## 🔗 Acesse meu portfólio: 
+ 
 [![Deploy](https://img.shields.io/badge/Deploy-Acessar-7c4dff?style=for-the-badge&logo=vercel&logoColor=white)](https://catarinaguimaraes.netlify.app/)
 
 ---
