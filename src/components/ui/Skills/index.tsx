@@ -1,34 +1,71 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { Badge } from "../Badge";
 
-const skills = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Next.js",
-  "Tailwind",
-  "Node.js",
-  "Figma",
-  "Java",
-  "Python",
-  "Git",
-  "GitHub",
-  "Netlify",
-  "Vercel",
-  "Vscode",
-  "Trello",
+interface SkillProps {
+  id: string;
+  icon: string;
+  title: string;
+}
+
+interface SkillCategory {
+  name: string;
+  skills: SkillProps[];
+}
+
+const skillCategories: SkillCategory[] = [
+  {
+    name: "Frontend",
+    skills: [
+      { id: "html", icon: "html", title: "HTML" },
+      { id: "css", icon: "css", title: "CSS" },
+      { id: "javascript", icon: "javascript", title: "JavaScript" },
+      { id: "typescript", icon: "typescript", title: "TypeScript" },
+      { id: "react", icon: "react", title: "React" },
+    ],
+  },
+  {
+    name: "Backend",
+    skills: [
+      { id: "nodejs", icon: "nodejs", title: "Node.js" },
+      { id: "python", icon: "python", title: "Python" },
+      { id: "java", icon: "java", title: "Java" },
+    ],
+  },
+  {
+    name: "Frameworks",
+    skills: [
+      { id: "nextjs", icon: "nextjs", title: "Next.js" },
+      { id: "tailwind", icon: "tailwind", title: "Tailwind" },
+    ],
+  },
+  {
+    name: "DevOps",
+    skills: [
+      { id: "git", icon: "git", title: "Git" },
+      { id: "github", icon: "github", title: "GitHub" },
+      { id: "netlify", icon: "netlify", title: "Netlify" },
+      { id: "vercel", icon: "vercel", title: "Vercel" },
+    ],
+  },
+  {
+    name: "Tools",
+    skills: [
+      { id: "figma", icon: "figma", title: "Figma" },
+      { id: "vscode", icon: "vscode", title: "VSCode" },
+      { id: "trello", icon: "trello", title: "Trello" },
+    ],
+  },
 ];
-
 
 export default function Skills() {
   return (
     <section id="skills" className="py-20 relative overflow-hidden">
       <div className="container mx-auto px-4 text-center relative">
         {/* Background title */}
-        <motion.h2 
-          className="text-[80px] md:text-[120px] font-extrabold uppercase text-gray-800 dark:text-gray-200 opacity-10 select-none pointer-events-none leading-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full"
+        <motion.h2
+          className="text-[4rem] md:text-[6rem] font-extrabold uppercase text-gray-800 dark:text-gray-200 opacity-10 select-none pointer-events-none leading-none absolute w-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.1 }}
           transition={{ duration: 0.8 }}
@@ -48,30 +85,44 @@ export default function Skills() {
             Habilidades
           </motion.h3>
 
-          {/* Skills list */}
-          <motion.div
-            className="w-full"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            <ul className="flex flex-wrap justify-center gap-3 max-w-2xl mx-auto">
-              {skills.map((skill) => (
-                <motion.li
-                  key={skill}
-                  className="px-4 py-2 text-sm md:text-base bg-white dark:bg-gray-800/50 backdrop-blur-sm rounded-lg text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all"
-                  whileHover={{ 
-                    scale: 1.05, 
-                    backgroundColor: "#8f00ff",
-                    color: "#ffffff"
-                  }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {skill}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
+          {/* Skills categories */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {skillCategories.map((category) => (
+              <motion.div
+                key={category.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="bg-card/20 rounded-xl p-6 shadow-lg border border-border/50"
+              >
+                <h4 className="text-xl font-bold mb-4 text-primary">
+                  {category.name}
+                </h4>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  {category.skills.map((skill) => (
+                    <div
+                      key={skill.id}
+                      className="flex items-center gap-2 bg-secondary/10 dark:bg-secondary/40 rounded-lg px-3 py-2 hover:bg-secondary/20 dark:hover:bg-secondary/30 transition-colors"
+                    >
+                      {skill.icon && (
+                        <div className="relative h-5 w-5">
+                          <Image
+                            src={`https://skillicons.dev/icons?i=${skill.icon}`}
+                            alt={skill.title}
+                            width={20}
+                            height={20}
+                            className="object-contain"
+                            unoptimized
+                          />
+                        </div>
+                      )}
+                      <Badge variant={"outline"} className="text-sm font-medium">{skill.title}</Badge>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
