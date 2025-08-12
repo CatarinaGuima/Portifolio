@@ -1,5 +1,7 @@
 # 👩‍💻 Catarina Guimarães - Portfólio de Desenvolvedora
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7971226f-fa25-40a1-a50c-7d26b4feedb3/deploy-status)](https://app.netlify.com/sites/dessertsfood/deploys)
+</br>
+</br>
 Bem-vindo(a) ao meu portfólio pessoal! 🚀  
 Aqui você encontrará meus principais projetos, minhas habilidades técnicas e um pouco sobre minha trajetória na área de tecnologia.
 
@@ -7,7 +9,7 @@ Aqui você encontrará meus principais projetos, minhas habilidades técnicas e 
 
 ## 🔗 Acesse meu portfólio: 
  
-[![Deploy](https://img.shields.io/badge/Deploy-Acessar-7c4dff?style=for-the-badge&logo=vercel&logoColor=white)](https://catarinaguimaraes.netlify.app/)
+[![Deploy](https://img.shields.io/badge/Deploy-Acessar-7c4dff?style=for-the-badge&logo=netlify&logoColor=white)](https://catarinaguimaraes.netlify.app/)
 
 ---
 
