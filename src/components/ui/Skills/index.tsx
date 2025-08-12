@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Badge } from "../Badge";
+import iconTrello from "@/assets/images/trello.png";
 
 interface SkillProps {
   id: string;
@@ -62,49 +63,62 @@ const skillCategories: SkillCategory[] = [
 export default function Skills() {
   return (
     <section id="skills" className="py-20 relative overflow-hidden">
-      <div className="container mx-auto px-4 text-center relative">
-        {/* Background title */}
-        <motion.h2
-          className="text-[4rem] md:text-[6rem] font-extrabold uppercase text-gray-800 dark:text-gray-200 opacity-10 select-none pointer-events-none leading-none absolute w-full"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.1 }}
-          transition={{ duration: 0.8 }}
-        >
-          Minhas Skills
-        </motion.h2>
-
-        {/* Main content container */}
-        <div className="relative z-10">
-          {/* Animated title */}
-          <motion.h3
-            className="text-4xl font-bold bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] bg-clip-text text-transparent mb-12 md:text-5xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+      <div className="container mx-auto px-4 text-center relative min-h-[500px]">
+        <div className="relative flex flex-col items-center">
+          {/* Background title */}
+          <motion.h2
+            className="text-[4rem] md:text-[6rem] font-extrabold uppercase text-gray-800 dark:text-gray-200 opacity-10 select-none pointer-events-none leading-none absolute  w-full max-w-[90%] text-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.1 }}
+            transition={{ duration: 0.8 }}
           >
-            Habilidades
-          </motion.h3>
+            Minhas Skills
+          </motion.h2>
+          {/* Main content container */}
+          <div className="relative z-10">
+            {/* Animated title */}
+            <motion.h3
+              className="text-4xl font-bold bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] bg-clip-text text-transparent md:text-5xl text-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              Habilidades
+              
+            </motion.h3>
+        </div>
 
           {/* Skills categories */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-24">
             {skillCategories.map((category) => (
               <motion.div
                 key={category.name}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="bg-card/20 rounded-xl p-6 shadow-lg border border-border/50"
+                className="bg-card/20 rounded-xl p-6 shadow-lg border border-border/50 hover:shadow-xl transition-all"
               >
                 <h4 className="text-xl font-bold mb-4 text-primary">
                   {category.name}
                 </h4>
                 <div className="flex flex-wrap gap-3 justify-center">
                   {category.skills.map((skill) => (
-                    <div
+                    <motion.div
                       key={skill.id}
+                      whileHover={{ scale: 1.05 }}
                       className="flex items-center gap-2 bg-secondary/10 dark:bg-secondary/40 rounded-lg px-3 py-2 hover:bg-secondary/20 dark:hover:bg-secondary/30 transition-colors"
                     >
-                      {skill.icon && (
+                      {skill.icon === "trello" ? (
+                        <div className="relative h-5 w-5">
+                          <Image
+                            src={iconTrello}
+                            alt={skill.title}
+                            width={18}
+                            height={18}
+                            className="object-contain"
+                          />
+                        </div>
+                      ) : (
                         <div className="relative h-5 w-5">
                           <Image
                             src={`https://skillicons.dev/icons?i=${skill.icon}`}
@@ -116,8 +130,10 @@ export default function Skills() {
                           />
                         </div>
                       )}
-                      <Badge variant={"outline"} className="text-sm font-medium">{skill.title}</Badge>
-                    </div>
+                      <Badge variant={"outline"} className="text-sm font-medium">
+                        {skill.title}
+                      </Badge>
+                    </motion.div>
                   ))}
                 </div>
               </motion.div>

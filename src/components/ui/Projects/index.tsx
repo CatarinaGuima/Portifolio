@@ -15,6 +15,7 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
         >
           Meus Projetos
+          <span className="absolute left-1/2 -bottom-2 w-16 h-[3px] bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] transform -translate-x-1/2 rounded-full"></span>
         </motion.h3>
 
         {/* Carrossel de projetos */}
@@ -29,3 +30,4 @@ export default function Projects() {
     </section>
   );
 }
+

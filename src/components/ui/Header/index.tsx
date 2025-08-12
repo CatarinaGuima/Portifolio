@@ -7,6 +7,8 @@ import { Archivo_Black } from "next/font/google";
 
 const archivo = Archivo_Black({
   weight:  "400",
+  subsets: ["latin"], 
+  preload: true,
 });
 
 const links = [
