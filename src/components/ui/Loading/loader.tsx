@@ -1,15 +1,34 @@
-// components/ui/AppLoader.tsx
 "use client";
 
-import { useState, useEffect } from 'react';
-import { Loading } from './index';
+import { useState, useEffect } from "react";
+import { Loading } from "./index";
+
+type GitHubUser = {
+  login: string;
+  avatar_url: string;
+  html_url: string;
+  // adicione outros campos que precisar
+};
 
 export function AppLoader({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
+  const [githubData, setGithubData] = useState<GitHubUser | null>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000); // Simula 2s de loading
-    return () => clearTimeout(timer);
+    const fetchGitHubData = async () => {
+      try {
+        const response = await fetch("https://api.github.com/users/catarinaguima/repos"); // substitua pelo usuário ou endpoint que precisar
+        if (!response.ok) throw new Error("Erro ao buscar dados do GitHub");
+        const data: GitHubUser = await response.json();
+        setGithubData(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchGitHubData();
   }, []);
 
   if (isLoading) {

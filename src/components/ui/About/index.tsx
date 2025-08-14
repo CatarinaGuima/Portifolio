@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { Typewriter } from "react-simple-typewriter";
 
 export default function About() {
@@ -56,6 +57,52 @@ export default function About() {
             em equipe. Tenho interesse em atuar em projetos que impulsionem meu
             crescimento, estimulem a colaboração e gerem resultados relevantes.
           </motion.p>
+        </div>
+        <div className="flex flex-col items-center justify-center space-y-2 mt-8">
+          <p>Quer trocar uma ideia ou colaborar em um projeto?</p>
+
+          {/* Redes sociais */}
+          <motion.div
+            className="flex gap-10 mt-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+          >
+            <div className="flex items-center justify-center gap-2">
+              <a
+                href="https://github.com/catarinaguima"
+                aria-label="GitHub"
+                className="hover:text-[#8f00ff] transition-colors duration-200"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FiGithub size={25} />
+              </a>
+              <span>GitHub</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <a
+                href="https://www.linkedin.com/in/catarinaguimaraess/"
+                aria-label="LinkedIn"
+                className="hover:text-[#8f00ff] transition-colors duration-200"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FiLinkedin size={25} />
+              </a>
+              <span>LinkedIn</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <a
+                href="mailto:catarina.guimaraes15@gmail.com"
+                aria-label="Email"
+                className="hover:text-[#8f00ff] transition-colors duration-200"
+              >
+                <FiMail size={25} />
+              </a>
+              <span>E-mail</span>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

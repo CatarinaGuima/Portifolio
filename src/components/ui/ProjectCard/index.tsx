@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import type { Project } from "@/data/projects";
+import type { Project } from "@/app/api/github/projects";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/Card";
 import {
@@ -14,12 +14,20 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import { motion } from "framer-motion";
 import { Button } from "../Button";
+import { MdOutlineOpenInNew } from "react-icons/md";
+import { FiGithub } from "react-icons/fi";
 
-export default function ProjectsCarousel({ projects }: { projects: Project[] }) {
+export default function ProjectsCarousel({
+  projects,
+}: {
+  projects: Project[];
+}) {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
-  const plugin = React.useRef(Autoplay({ delay: 3000, stopOnInteraction: true }));
+  const plugin = React.useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: true })
+  );
 
   React.useEffect(() => {
     if (!api) return;
@@ -32,14 +40,13 @@ export default function ProjectsCarousel({ projects }: { projects: Project[] }) 
     });
   }, [api]);
 
-   const scrollTo = (index: number) => {
+  const scrollTo = (index: number) => {
     api?.scrollTo(index);
   };
 
   return (
-   
     <div className="w-full max-w-4xl mx-auto px-4">
-       {/* Container do Carrossel */}
+      {/* Container do Carrossel */}
       <Carousel
         setApi={setApi}
         plugins={[plugin.current]}
@@ -51,7 +58,10 @@ export default function ProjectsCarousel({ projects }: { projects: Project[] }) 
       >
         <CarouselContent>
           {projects.map((project, index) => (
-            <CarouselItem key={project.id || `${project.title}-${index}`} className="basis-full sm:basis-1/2 lg:basis-1/3 pl-4">
+            <CarouselItem
+              key={project.id || `${project.title}-${index}`}
+              className="basis-full sm:basis-1/2 lg:basis-1/3 pl-4"
+            >
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -74,7 +84,9 @@ export default function ProjectsCarousel({ projects }: { projects: Project[] }) 
                         </div>
                       )}
                       <div className="p-4 flex flex-col flex-grow">
-                        <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
+                        <h3 className="text-lg font-semibold mb-2">
+                          {project.title}
+                        </h3>
                         <p className="text-sm text-muted-foreground mb-4 flex-grow">
                           {project.description}
                         </p>
@@ -91,21 +103,23 @@ export default function ProjectsCarousel({ projects }: { projects: Project[] }) 
                         <div className="flex gap-2">
                           {project.demo && (
                             <a
-                              className="text-sm px-3 py-1 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+                              className="text-sm px-3 py-1 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors w-1/2 flex items-center justify-center gap-2"
                               href={project.demo}
                               target="_blank"
                               rel="noreferrer"
                             >
+                              <MdOutlineOpenInNew />
                               Demo
                             </a>
                           )}
                           {project.repo && (
                             <a
-                              className="text-sm px-3 py-1 border rounded-md hover:bg-accent transition-colors"
+                              className="text-sm px-3 py-1 border rounded-md hover:bg-accent transition-colors w-1/2 flex items-center justify-center gap-2"
                               href={project.repo}
                               target="_blank"
                               rel="noreferrer"
                             >
+                              <FiGithub />
                               Código
                             </a>
                           )}
@@ -121,15 +135,15 @@ export default function ProjectsCarousel({ projects }: { projects: Project[] }) 
         <CarouselPrevious className="hidden sm:flex absolute -left-12 top-1/2 -translate-y-1/2 z-10 bg-background hover:bg-accent" />
         <CarouselNext className="hidden sm:flex absolute -right-12 top-1/2 -translate-y-1/2 z-10 bg-background hover:bg-accent" />
       </Carousel>
-        {/* Indicador com bolinhas */}
+      {/* Indicador com bolinhas */}
       <div className="flex justify-center gap-2 mt-6">
         {Array.from({ length: count }).map((_, index) => (
           <Button
             key={index}
             onClick={() => scrollTo(index)}
-            className={`w-3 h-3 rounded-full transition-all ${
-              current === index 
-                ? "bg-primary w-6" 
+            className={`w-2 h-2 rounded-full transition-all ${
+              current === index
+                ? "bg-primary w-6"
                 : "bg-muted hover:bg-primary/50"
             }`}
             aria-label={`Ir para o projeto ${index + 1}`}
