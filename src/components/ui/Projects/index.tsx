@@ -1,34 +1,99 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ProjectCard from "@/components/ui/ProjectCard";
+import AllProjecstCard from "@/components/ui/AllProjectsCard";
 import { useGithubProjects } from "@/app/api/github/projects";
-
+import { Loading } from "@/components/ui/Loading";
+import HighlightsProjectsCard from "../HighlightsProjects";
+import highlightProjects from "@/data/highlightProjects"; // Import your highlight projects data
 export default function Projects() {
-  const projects = useGithubProjects("CatarinaGuima");
+  const { projects, loading, error } = useGithubProjects("CatarinaGuima");
+
   return (
-    <section id="projetos" className=" bg-black/5 dark:bg-white/5 py-12 ">
-      <div className="container mx-auto px-4 text-center relative mt-6">
-        {/* Animated title */}
-        <motion.h3
-          className="relative z-10 text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] bg-clip-text mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          Meus Projetos
-        </motion.h3>
+    <section
+      id="projetos"
+      className="relative py-20 overflow-hidden bg-black/5 dark:bg-white/5"
+    >
+      <div className="container px-4 mx-auto">
+        {/* Content container */}
+        <div className="relative z-10">
+          {/* Section title */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col items-center mb-12"
+          >
+            <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] bg-clip-text">
+              Meus Projetos
+            </h3>
+          </motion.div>
 
-        <div className="">Destaques</div>
+          {/* Decorative elements */}
+          <div className="flex flex-col items-start gap-2 mx-[8rem]">
+            <h4 className="text-2xl md:text-3xl text-gray-500 dark:text-gray-400 flex items-center">
+              Destaques
+            </h4>
+            <span className="h-1 w-16 bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] rounded-full" />
+          </div>
 
-        {/* Carrossel de projetos */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-        >
-          <ProjectCard projects={projects.projects} />
-        </motion.div>
+          {/* Projects content */}
+          {loading ? (
+            <div className="flex justify-center py-10">
+              <Loading size={48} />
+            </div>
+          ) : error ? (
+            <div className="text-center py-12 text-red-500">
+              Error loading projects: {error}
+            </div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="flex items-center justify-center gap-4 my-[4rem]"
+            >
+              {highlightProjects.map((project) => (
+                <HighlightsProjectsCard
+                  key={project.title}
+                  imageUrl={project.imageUrl}
+                  title={project.title}
+                  description={project.description}
+                  technologies={project.technologies}
+                  demoUrl={project.demoUrl}
+                  githubUrl={project.githubUrl}
+                />
+              ))}
+            </motion.div>
+          )}
+
+          {/* Decorative elements */}
+          <div className="flex flex-col items-start gap-2 mx-[8rem] mt-12">
+            <h4 className="text-2xl md:text-3xl text-gray-500 dark:text-gray-400 flex items-center">
+              Todos
+            </h4>
+            <span className="h-1 w-16 bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] rounded-full" />
+          </div>
+
+          {/* All Projects content */}
+          {loading ? (
+            <div className="flex justify-center py-12">
+              <Loading size={48} />
+            </div>
+          ) : error ? (
+            <div className="text-center py-12 text-red-500">
+              Error loading projects: {error}
+            </div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
+              <AllProjecstCard projects={projects} />
+            </motion.div>
+          )}
+        </div>
       </div>
     </section>
   );

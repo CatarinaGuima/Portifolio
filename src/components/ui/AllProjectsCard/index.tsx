@@ -17,7 +17,7 @@ import { Button } from "../Button";
 import { MdOutlineOpenInNew } from "react-icons/md";
 import { FiGithub } from "react-icons/fi";
 
-export default function ProjectsCarousel({
+export default function AllProjectsCarousel({
   projects,
 }: {
   projects: Project[];
@@ -87,7 +87,7 @@ export default function ProjectsCarousel({
                         <h3 className="text-lg font-semibold mb-2">
                           {project.title}
                         </h3>
-                        <p className="text-sm text-muted-foreground mb-4 flex-grow">
+                        <p className="text-sm text-muted-foreground mb-4 flex-grow text-justify">
                           {project.description}
                         </p>
                         <div className="flex flex-wrap gap-2 mb-4">
@@ -139,11 +139,12 @@ export default function ProjectsCarousel({
       <div className="flex justify-center gap-2 mt-6">
         {Array.from({ length: count }).map((_, index) => (
           <Button
+          size={"icon"}
             key={index}
             onClick={() => scrollTo(index)}
             className={`w-2 h-2 rounded-full transition-all ${
               current === index
-                ? "bg-primary w-6"
+                ? "bg-primary w-4"
                 : "bg-muted hover:bg-primary/50"
             }`}
             aria-label={`Ir para o projeto ${index + 1}`}
