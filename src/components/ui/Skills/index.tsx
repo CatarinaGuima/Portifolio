@@ -1,8 +1,16 @@
 "use client";
+
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { Badge } from "../Badge";
+
+// Ícones locais
 import iconTrello from "@/assets/images/trello.png";
+import iconFrontEnd from "@/assets/images/frontend.png";
+import iconBackEnd from "@/assets/images/backend.png";
+import iconFrameworks from "@/assets/images/frameworks.png";
+import iconDevOps from "@/assets/images/devops.png";
+import iconTools from "@/assets/images/tools.png";
 
 interface SkillProps {
   id: string;
@@ -11,12 +19,14 @@ interface SkillProps {
 }
 
 interface SkillCategory {
+  image: StaticImageData;
   name: string;
   skills: SkillProps[];
 }
 
 const skillCategories: SkillCategory[] = [
   {
+    image: iconFrontEnd,
     name: "Frontend",
     skills: [
       { id: "html", icon: "html", title: "HTML" },
@@ -27,6 +37,7 @@ const skillCategories: SkillCategory[] = [
     ],
   },
   {
+    image: iconBackEnd,
     name: "Backend",
     skills: [
       { id: "nodejs", icon: "nodejs", title: "Node.js" },
@@ -35,6 +46,7 @@ const skillCategories: SkillCategory[] = [
     ],
   },
   {
+    image: iconFrameworks,
     name: "Frameworks",
     skills: [
       { id: "nextjs", icon: "nextjs", title: "Next.js" },
@@ -42,6 +54,7 @@ const skillCategories: SkillCategory[] = [
     ],
   },
   {
+    image: iconDevOps,
     name: "DevOps",
     skills: [
       { id: "git", icon: "git", title: "Git" },
@@ -51,6 +64,7 @@ const skillCategories: SkillCategory[] = [
     ],
   },
   {
+    image: iconTools,
     name: "Tools",
     skills: [
       { id: "figma", icon: "figma", title: "Figma" },
@@ -61,85 +75,83 @@ const skillCategories: SkillCategory[] = [
 ];
 
 export default function Skills() {
+  const renderIcon = (skill: SkillProps) => {
+    const isTrello = skill.icon === "trello";
+    return (
+      <Image
+        src={isTrello ? iconTrello : `https://skillicons.dev/icons?i=${skill.icon}`}
+        alt={skill.title}
+        width={20}
+        height={20}
+        className="object-contain"
+        unoptimized={!isTrello}
+      />
+    );
+  };
+
   return (
     <section id="skills" className="py-20 relative overflow-hidden">
-      <div className="container mx-auto px-4 text-center relative min-h-[500px]">
-        <div className="relative flex flex-col items-center">
-          {/* Background title */}
-          <motion.h2
-            className="text-[4rem] md:text-[6rem] font-extrabold uppercase text-gray-800 dark:text-gray-200 opacity-10 select-none pointer-events-none leading-none absolute  w-full max-w-[90%] text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.1 }}
-            transition={{ duration: 0.8 }}
-          >
-            Minhas Skills
-          </motion.h2>
-          {/* Main content container */}
-          <div className="relative z-10">
-            {/* Animated title */}
-            <motion.h3
-              className="text-4xl font-bold bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] bg-clip-text text-transparent md:text-5xl text-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              Habilidades
-              
-            </motion.h3>
-        </div>
+      {/* Header */}
+      <div className="container mx-auto px-4 text-center relative flex flex-col justify-center items-center mt-4">
+        <motion.h2
+          className="text-[4rem] md:text-[5rem] font-extrabold uppercase text-white opacity-10 select-none pointer-events-none absolute leading-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.1 }}
+          transition={{ duration: 0.8 }}
+        >
+          Minhas Skills
+        </motion.h2>
 
-          {/* Skills categories */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-24">
-            {skillCategories.map((category) => (
-              <motion.div
-                key={category.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="bg-card/20 rounded-xl p-6 shadow-lg border border-border/50 hover:shadow-xl transition-all"
-              >
-                <h4 className="text-xl font-bold mb-4 text-primary">
-                  {category.name}
-                </h4>
-                <div className="flex flex-wrap gap-3 justify-center">
-                  {category.skills.map((skill) => (
-                    <motion.div
-                      key={skill.id}
-                      whileHover={{ scale: 1.05 }}
-                      className="flex items-center gap-2 bg-secondary/10 dark:bg-secondary/40 rounded-lg px-3 py-2 hover:bg-secondary/20 dark:hover:bg-secondary/30 transition-colors"
-                    >
-                      {skill.icon === "trello" ? (
-                        <div className="relative h-5 w-5">
-                          <Image
-                            src={iconTrello}
-                            alt={skill.title}
-                            width={18}
-                            height={18}
-                            className="object-contain"
-                          />
-                        </div>
-                      ) : (
-                        <div className="relative h-5 w-5">
-                          <Image
-                            src={`https://skillicons.dev/icons?i=${skill.icon}`}
-                            alt={skill.title}
-                            width={20}
-                            height={20}
-                            className="object-contain"
-                            unoptimized
-                          />
-                        </div>
-                      )}
-                      <Badge variant={"outline"} className="text-sm font-medium">
-                        {skill.title}
-                      </Badge>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+        <motion.h3
+          className="relative z-10 text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] bg-clip-text"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Habilidades
+        </motion.h3>
+
+      </div>
+
+      {/* Skills Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12">
+        {skillCategories.map((category) => (
+          <motion.div
+            key={category.name}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-white/10 dark:bg-black/20 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-gray-200/30 dark:border-gray-700/30 hover:shadow-xl transition-all my-2"
+          >
+            {/* Category header */}
+            <div className="flex flex-col items-center mb-6 -mt-12">
+              <Image
+                src={category.image}
+                alt={category.name}
+                width={64}
+                height={64}
+                className="object-contain mb-3"
+              />
+              <h4 className="text-xl font-bold text-primary">{category.name}</h4>
+            </div>
+
+            {/* Skills list */}
+            <div className="flex flex-wrap gap-3 justify-center">
+              {category.skills.map((skill) => (
+                <motion.div
+                  key={skill.id}
+                  whileHover={{ scale: 1.05 }}
+                  className="flex items-center gap-2 bg-white/20 dark:bg-black/30 rounded-lg px-3 py-2 hover:bg-white/30 dark:hover:bg-black/40 transition-colors"
+                >
+                  {renderIcon(skill)}
+                  <Badge variant="outline" className="text-sm font-medium">
+                    {skill.title}
+                  </Badge>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
