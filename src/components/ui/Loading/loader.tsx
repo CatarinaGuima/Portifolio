@@ -7,7 +7,6 @@ type GitHubUser = {
   login: string;
   avatar_url: string;
   html_url: string;
-  // adicione outros campos que precisar
 };
 
 export function AppLoader({ children }: { children: React.ReactNode }) {
@@ -17,7 +16,7 @@ export function AppLoader({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const fetchGitHubData = async () => {
       try {
-        const response = await fetch("https://api.github.com/users/catarinaguima/repos"); // substitua pelo usuário ou endpoint que precisar
+        const response = await fetch("https://api.github.com/users/catarinaguima/repos"); 
         if (!response.ok) throw new Error("Erro ao buscar dados do GitHub");
         const data: GitHubUser = await response.json();
         setGithubData(data);
