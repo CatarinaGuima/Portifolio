@@ -1,7 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;500;600;700&display=swap");
-
 /* Tailwind v4 core */
 @import "tailwindcss";
+@import "tw-animate-css";
 
 /* Variante dark (Tailwind v4) */
 @custom-variant dark (&:is(.dark *));

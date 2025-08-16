@@ -22,7 +22,7 @@ export default function ThemeToggle() {
   const isDark = resolvedTheme === "dark";
 
   return (
-    <div className="flex items-center gap-2 mr-[4rem]">
+    <div className="flex items-center gap-2 sm:mr-0">
       <FiSun 
         className={`w-4 h-4 transition-opacity ${!isDark ? "opacity-100 text-yellow-500" : "opacity-40"}`} 
       />

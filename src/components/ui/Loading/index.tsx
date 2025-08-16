@@ -12,7 +12,7 @@ interface LoadingProps {
 export function Loading({
   size = 20, 
   color = "#8f00ff",
-  fullScreen = false,
+  fullScreen = true,
   className = "",
   speedMultiplier = 1,
 }: LoadingProps) {

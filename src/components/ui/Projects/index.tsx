@@ -22,7 +22,7 @@ export default function Projects() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col items-center mb-12"
+            className="flex flex-col items-center mb-8"
           >
             <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] bg-clip-text">
               Meus Projetos
@@ -39,7 +39,7 @@ export default function Projects() {
 
           {/* Projects content */}
           {loading ? (
-            <div className="flex justify-center py-10">
+            <div className="flex justify-center py-8">
               <Loading size={48} />
             </div>
           ) : error ? (
@@ -51,7 +51,7 @@ export default function Projects() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="flex items-center justify-center gap-4 my-[4rem]"
+              className="flex items-center justify-center gap-4 my-[2rem]"
             >
               {highlightProjects.map((project) => (
                 <HighlightsProjectsCard
@@ -68,7 +68,7 @@ export default function Projects() {
           )}
 
           {/* Decorative elements */}
-          <div className="flex flex-col items-start gap-2 mx-[8rem] mt-12">
+          <div className="flex flex-col items-start gap-2 mx-[8rem] mt-12 mb-8">
             <h4 className="text-2xl md:text-3xl text-gray-500 dark:text-gray-400 flex items-center">
               Todos
             </h4>
@@ -77,7 +77,7 @@ export default function Projects() {
 
           {/* All Projects content */}
           {loading ? (
-            <div className="flex justify-center py-12">
+            <div className="flex justify-center py-8">
               <Loading size={48} />
             </div>
           ) : error ? (

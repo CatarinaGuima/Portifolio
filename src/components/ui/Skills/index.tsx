@@ -94,7 +94,7 @@ export default function Skills() {
       {/* Header */}
       <div className="container mx-auto px-4 text-center relative flex flex-col justify-center items-center mt-4">
         <motion.h2
-          className="text-[4rem] md:text-[5rem] font-extrabold uppercase text-white opacity-10 select-none pointer-events-none absolute leading-none"
+          className="text-[4rem] md:text-[5rem] font-extrabold uppercase text-gray-500 opacity-10 select-none pointer-events-none absolute leading-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.1 }}
           transition={{ duration: 0.8 }}
