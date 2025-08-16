@@ -22,16 +22,18 @@ export default function Projects() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col items-center mb-8"
+            className="flex items-center justify-center gap-4 mb-8"
           >
+            <span className="h-1 w-16 bg-gray-500 rounded-full" />
             <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] bg-clip-text">
               Meus Projetos
             </h3>
+            <span className="h-1 w-16 bg-gray-500 rounded-full" />
           </motion.div>
 
           {/* Decorative elements */}
           <div className="flex flex-col items-start gap-2 mx-[8rem]">
-            <h4 className="text-2xl md:text-3xl text-gray-500 dark:text-gray-400 flex items-center">
+            <h4 className="text-2xl md:text-3xl text-gray-500 dark:text-gray-500 flex items-center">
               Destaques
             </h4>
             <span className="h-1 w-16 bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] rounded-full" />

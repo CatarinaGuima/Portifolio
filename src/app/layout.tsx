@@ -9,6 +9,22 @@ import { AppLoader } from "@/components/ui/Loading/loader";
 export const metadata: Metadata = {
   title: "Portfólio | Catarina Guimarães",
   description: "Portfólio pessoal de Catarina Guimarães",
+  openGraph: {
+    title: "Portfólio | Catarina Guimarães",
+    description: "Confira meus projetos e experiências",
+    url: "https://catarinaguimaraes.netlify.app/",
+    siteName: "Portfólio Catarina",
+    images: [
+      {
+        url: "https://catarinaguimaraes.netlify.app/avatar.png", 
+        width: 1200,
+        height: 630,
+        alt: "Catarina Guimarães",
+      },
+    ],
+    locale: "pt_BR",
+    type: "website",
+  },
 };
 
 const nunito = Nunito({

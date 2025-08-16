@@ -34,7 +34,7 @@ export default function About() {
             className="indent-8"
           >
             Com dupla formação em Administração e Análise e Desenvolvimento de
-            Sistemas. Tenho vivência prática em projetos full stack e mobile,
+            Sistemas. Tenho vivência prática em projetos Web e mobile,
             explorando tecnologias como{" "}
             <span className="text-primary font-bold">React</span>,{" "}
             <span className="text-primary font-bold">Next.js</span> e{" "}
