@@ -7,13 +7,25 @@ import { FiDownload } from "react-icons/fi";
 import { SlArrowDown } from "react-icons/sl";
 
 export default function Hero() {
- const handleWhatsAppClick = () => {
-  const message = encodeURIComponent(
-    "Olá Catarina! Vi seu portfólio e gostaria de conversar sobre."
-  );
-  window.open(`/api/whatsapp?message=${message}`, "_blank");
-};
+  const handleWhatsAppClick = async () => {
+  const message = "Olá Catarina! Vi seu portfólio e gostaria de conversar sobre.";
 
+  try {
+    // Faz requisição POST para a rota serverless
+    const response = await fetch("/api/whatsapp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message }),
+    });
+
+    // A rota faz redirect, então abrimos o mesmo endpoint
+    if (response.redirected) {
+      window.open(response.url, "_blank");
+    }
+  } catch (error) {
+    console.error("Erro ao abrir WhatsApp:", error);
+  }
+};
 
   const handleDownloadCV = () => {
     const link = document.createElement("a");
@@ -25,7 +37,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden pt-8 pb-8 md:pt-16 md:pb-16 px-4 sm:px-6 lg:px-8 min-h-[calc(100vh-80px)] flex flex-col justify-center">
+    <section className="relative overflow-hidden pt-2 pb-2 md:pt-14 md:pb-14 px-4 sm:px-6 lg:px-8 min-h-[calc(100vh-80px)] flex flex-col justify-center">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 w-full relative z-10">
         {/* Text Content */}
         <motion.div
@@ -79,7 +91,7 @@ export default function Hero() {
           </motion.h2>
 
           <motion.div
-            className="flex items-center justify-center sm:items-start gap-4"
+            className="flex sm:flex-row items-center sm:items-start justify-center sm:justify-start gap-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -93,6 +105,7 @@ export default function Hero() {
               <FaWhatsapp size={20} />
               <span>Entre em contato</span>
             </Button>
+
             <Button
               onClick={handleDownloadCV}
               className="flex items-center gap-2 px-6 py-3 rounded-lg transition-all hover:scale-105 border-2"
@@ -110,7 +123,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative order-1 md:order-2 mb-8 md:mb-0"
+          className="relative order-1 md:order-2 md:mb-0"
         >
           <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-96 lg:h-96 rounded-2xl overflow-hidden border-4 border-purple-500/20 bg-gradient-to-br from-purple-500/10 to-blue-400/10 shadow-xl">
             <Image
