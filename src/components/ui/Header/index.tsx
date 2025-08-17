@@ -6,7 +6,7 @@ import Image from "next/image";
 import logo from "@/assets/images/logo.png";
 import { Archivo_Black } from "next/font/google";
 import MenuSidebar from "@/components/ui/Sidebar/menuSidebar";
-import { Menu } from "lucide-react";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { Button } from "../Button";
 
 const archivo = Archivo_Black({
@@ -94,36 +94,36 @@ export default function Header() {
             <Image
               src={logo}
               alt="Logo Catarina Guimarães"
-              width={36}
-              height={36}
+              width={40}
+              height={40}
               className="object-contain drop-shadow hover:rotate-12 transition-transform duration-300"
               priority
             />
             <span
-              className={`${archivo.className} text-transparent bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] bg-clip-text text-xl sm:text-2xl font-bold`}
+              className={`${archivo.className} text-transparent bg-gradient-to-r from-main-purple to-main-lilac bg-clip-text text-xl sm:text-2xl font-bold`}
             >
               Catarina Guimarães
             </span>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-8">
             {links.map((link) => (
               <motion.a
                 key={link.href}
                 href={link.href}
-                className={`relative px-1 py-2 font-medium text-md transition-colors ${
+                className={`relative px-1 py-2 font-semibold text-md transition-colors ${
                   activeSection === link.href
-                    ? "text-[#8f00ff] dark:text-[#a6d3ff] font-semibold"
-                    : "text-gray-700 hover:text-[#8f00ff] dark:text-gray-300 dark:hover:text-[#a6d3ff]"
+                    ? "text-main-purple font-semibold"
+                    : "text-gray-500 hover:text-main-purple dark:text-gray-500 dark:hover:text-main-purple"
                 }`}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.02 }}
               >
                 {link.label}
                 {activeSection === link.href && (
                   <motion.span
                     layoutId="navUnderline"
-                    className="absolute left-0 bottom-0 w-full h-0.5 bg-[#8f00ff] dark:bg-[#a6d3ff]"
+                    className="absolute left-0 bottom-0 w-full h-0.5 bg-main-purple dark:bg-main-purple"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
@@ -140,9 +140,9 @@ export default function Header() {
               onClick={() => setMenuOpen(true)}
               className="md:hidden p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 transition"
               aria-label="Abrir menu"
-              variant="ghost"
+              variant="outline"
             >
-              <Menu className="w-6 h-6" />
+              <GiHamburgerMenu className="w-8 h-8" />
             </Button>
           </div>
         </div>

@@ -6,10 +6,11 @@ import { Typewriter } from "react-simple-typewriter";
 
 export default function About() {
   return (
-    <section id="sobre" className="py-8 bg-black/5 dark:bg-white/5">
+    <section id="sobre" className="py-8 sm:py-16 bg-black/5 dark:bg-white/5">
       <div className="flex flex-col items-center justify-center max-w-4xl px-4 py-12 mx-auto">
         <motion.h2
-          className="mb-8 text-center text-transparent bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] bg-clip-text text-4xl font-bold"
+          className="mb-8 text-center text-transparent bg-gradient-to-r from-main-purple to-main-lilac bg-clip-text 
+             text-2xl sm:text-4xl font-bold max-w-md sm:max-w-2xl mx-auto leading-snug"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -18,7 +19,7 @@ export default function About() {
             words={["Um pouco mais sobre mim!"]}
             loop={true}
             cursor
-            cursorColor="#8f00ff"
+            cursorColor="main-purple"
             cursorStyle="|"
             typeSpeed={70}
             deleteSpeed={50}
@@ -26,7 +27,7 @@ export default function About() {
           />
         </motion.h2>
 
-        <div className="text-lg font-medium text-gray-700 dark:text-gray-300 space-y-4 text-justify w-5/6">
+        <div className="text-lg font-medium text-gray-500 dark:text-gray-300 space-y-4 text-justify w-5/6">
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -58,7 +59,7 @@ export default function About() {
             crescimento, estimulem a colaboração e gerem resultados relevantes.
           </motion.p>
         </div>
-        <div className="flex flex-col items-center justify-center space-y-2 mt-8">
+        <div className="flex flex-col items-center justify-center text-gray-500 dark:text-gray-300 space-y-2 mt-8">
           <p>Quer trocar uma ideia ou colaborar em um projeto?</p>
 
           {/* Redes sociais */}

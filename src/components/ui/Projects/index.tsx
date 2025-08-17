@@ -1,18 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import AllProjecstCard from "@/components/ui/AllProjectsCard";
 import { useGithubProjects } from "@/app/api/github/projects";
 import { Loading } from "@/components/ui/Loading";
+import highlightProjects from "@/data/highlightProjects"; 
 import HighlightsProjectsCard from "../HighlightsProjects";
-import highlightProjects from "@/data/highlightProjects"; // Import your highlight projects data
+import AllProjecstCard from "@/components/ui/AllProjectsCard";
+
 export default function Projects() {
   const { projects, loading, error } = useGithubProjects("CatarinaGuima");
 
   return (
     <section
       id="projetos"
-      className="relative py-20 overflow-hidden bg-black/5 dark:bg-white/5"
+      className="relative py-20 sm:py-24 overflow-hidden bg-black/5 dark:bg-white/5"
     >
       <div className="container px-4 mx-auto">
         {/* Content container */}
