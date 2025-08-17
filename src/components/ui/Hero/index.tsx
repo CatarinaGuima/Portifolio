@@ -7,25 +7,13 @@ import { FiDownload } from "react-icons/fi";
 import { SlArrowDown } from "react-icons/sl";
 
 export default function Hero() {
-  const handleWhatsAppClick = async () => {
-  const message = "Olá Catarina! Vi seu portfólio e gostaria de conversar sobre.";
-
-  try {
-    // Faz requisição POST para a rota serverless
-    const response = await fetch("/api/whatsapp", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message }),
-    });
-
-    // A rota faz redirect, então abrimos o mesmo endpoint
-    if (response.redirected) {
-      window.open(response.url, "_blank");
-    }
-  } catch (error) {
-    console.error("Erro ao abrir WhatsApp:", error);
-  }
+ const handleWhatsAppClick = () => {
+  const message = encodeURIComponent(
+    "Olá Catarina! Vi seu portfólio e gostaria de conversar sobre."
+  );
+  window.open(`/api/whatsapp?message=${message}`, "_blank");
 };
+
 
   const handleDownloadCV = () => {
     const link = document.createElement("a");
