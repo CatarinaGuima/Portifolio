@@ -7,16 +7,13 @@ import { FiDownload } from "react-icons/fi";
 import { SlArrowDown } from "react-icons/sl";
 
 export default function Hero() {
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent(
-      "Olá Catarina! Vi seu portfólio e gostaria de conversar sobre."
-    );
-    window.open(
-      `/api/whatsapp?message=${message}`,
-      "_blank",
-      "noopener,noreferrer"
-    );
-  };
+ const handleWhatsAppClick = () => {
+  const message = encodeURIComponent(
+    "Olá Catarina! Vi seu portfólio e gostaria de conversar sobre."
+  );
+  window.open(`/api/whatsapp?message=${message}`, "_blank");
+};
+
 
   const handleDownloadCV = () => {
     const link = document.createElement("a");
@@ -28,7 +25,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden pt-12 pb-12 md:pt-16 md:pb-16 px-4 sm:px-6 lg:px-8 min-h-[calc(100vh-80px)] flex flex-col justify-center">
+    <section className="relative overflow-hidden pt-8 pb-8 md:pt-16 md:pb-16 px-4 sm:px-6 lg:px-8 min-h-[calc(100vh-80px)] flex flex-col justify-center">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 w-full relative z-10">
         {/* Text Content */}
         <motion.div
@@ -43,34 +40,34 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <span className="text-lg md:text-xl text-primary mb-8 font-medium">
+            <span className="flex flex-col items-center sm:items-start text-lg md:text-xl text-primary mb-8 font-semibold">
               Olá, eu sou
             </span>
             <motion.span
-              className="flex flex-col justify-center text-4xl md:text-5xl lg:text-6xl font-bold space-y-2 md:space-y-4"
+              className="flex flex-col items-center sm:items-start text-4xl md:text-5xl lg:text-6xl font-bold space-y-2 md:space-y-4"
               initial={{ y: 20 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-800">
+              <span className="text-transparent bg-gradient-to-r from-main-purple to-main-lilac bg-clip-text">
                 Catarina
               </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">
+              <span className="text-transparent bg-gradient-to-r from-main-lilac to-main-purple bg-clip-text">
                 Guimarães
               </span>
             </motion.span>
           </motion.h1>
 
           <motion.h2
-            className="flex flex-col text-base md:text-lg text-muted-foreground max-w-[600px]"
+            className="flex flex-col items-center sm:items-start text-base md:text-lg text-muted-foreground max-w-[600px] mx-auto md:mx-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <div className="text-[#94a3b8] font-extrabold text-xl mb-6 md:mb-8">
+            <div className="text-[#94a3b8] font-extrabold text-xl mb-6 md:mb-8 text-center sm:text-left">
               Desenvolvedora Front-end
             </div>
-            <p className="leading-relaxed">
+            <p className="leading-relaxed text-justify w-11/12 mx-auto sm:mx-0">
               Especialista em criar experiências digitais performáticas e
               acessíveis com{" "}
               <span className="text-primary font-bold">React</span>,{" "}
@@ -82,7 +79,7 @@ export default function Hero() {
           </motion.h2>
 
           <motion.div
-            className="flex flex-wrap gap-4"
+            className="flex items-center justify-center sm:items-start gap-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}

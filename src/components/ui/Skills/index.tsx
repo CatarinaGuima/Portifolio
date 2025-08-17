@@ -90,7 +90,7 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="py-20 relative overflow-hidden">
+    <section id="skills" className="py-20 sm:py-36 relative overflow-hidden">
       {/* Header */}
       <div className="container mx-auto px-4 text-center relative flex flex-col justify-center items-center mt-4">
         <motion.h2

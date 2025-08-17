@@ -1,6 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { IoCloseCircleOutline } from "react-icons/io5";
 import { useEffect, useRef } from "react";
 
 interface MenuSidebarProps {
@@ -77,7 +77,7 @@ export default function MenuSidebar({
               damping: 30,
               bounce: 0.1
             }}
-            className="fixed top-0 right-0 w-72 h-full bg-white dark:bg-gray-900 z-50 shadow-2xl md:hidden focus:outline-none"
+            className="fixed top-0 right-0 w-72 h-full bg-secondary z-50 shadow-2xl md:hidden focus:outline-4"
           >
             <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
               <h2 className="text-lg font-semibold">Menu</h2>
@@ -85,15 +85,15 @@ export default function MenuSidebar({
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={onClose}
-                className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-500 transition-colors"
                 aria-label="Fechar menu"
               >
-                <X className="w-6 h-6" />
+                <IoCloseCircleOutline size={30} />
               </motion.button>
             </div>
 
             <nav className="p-4">
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {links.map((link) => (
                   <motion.li 
                     key={link.href}
@@ -105,7 +105,7 @@ export default function MenuSidebar({
                       onClick={onClose}
                       className={`block px-4 py-3 rounded-lg transition-all duration-200 ${
                         activeSection === link.href
-                          ? "bg-[#8f00ff]/10 text-[#8f00ff] dark:text-[#a6d3ff] font-semibold"
+                          ? "bg-main-purple/10 text-main-purple dark:text-main-lilac font-semibold"
                           : "hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-800 dark:text-gray-200"
                       }`}
                     >
