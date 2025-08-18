@@ -37,7 +37,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden pt-2 pb-2 md:pt-14 md:pb-14 px-4 sm:px-6 lg:px-8 min-h-[calc(100vh-80px)] flex flex-col justify-center">
+    <section className="relative overflow-hidden pt-2 pb-2 md:pt-14 md:pb-14 px-4 sm:px-6 lg:px-8 min-h-[calc(100vh-60px)] flex flex-col justify-center">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 w-full relative z-10">
         {/* Text Content */}
         <motion.div

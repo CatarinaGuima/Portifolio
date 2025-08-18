@@ -69,7 +69,10 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <div className="hidden md:flex gap-6">
               {links.map((_, i) => (
-                <div key={i} className="w-12 h-6 bg-gray-200 dark:bg-gray-800 rounded animate-pulse" />
+                <div
+                  key={i}
+                  className="w-12 h-6 bg-gray-200 dark:bg-gray-800 rounded animate-pulse"
+                />
               ))}
             </div>
             <div className="w-6 h-6 bg-gray-200 dark:bg-gray-800 rounded-full animate-pulse" />
@@ -82,29 +85,34 @@ export default function Header() {
 
   return (
     <>
-      <header className={`sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b transition-all duration-300 ${
-        scrolled ? "border-gray-200 dark:border-gray-800 shadow-sm" : "border-transparent"
-      }`}>
+      <header
+        className={`sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b transition-all duration-300 ${
+          scrolled
+            ? "border-gray-200 dark:border-gray-800 shadow-sm"
+            : "border-transparent"
+        }`}
+      >
         <div className="container mx-auto flex items-center justify-between px-4 py-3">
           {/* Logo and Name */}
-          <motion.div 
-            className="flex items-center gap-3"
-            whileHover={{ scale: 1.02 }}
-          >
-            <Image
-              src={logo}
-              alt="Logo Catarina Guimarães"
-              width={40}
-              height={40}
-              className="object-contain drop-shadow hover:rotate-12 transition-transform duration-300"
-              priority
-            />
-            <span
-              className={`${archivo.className} text-transparent bg-gradient-to-r from-main-purple to-main-lilac bg-clip-text text-xl sm:text-2xl font-bold`}
-            >
-              Catarina Guimarães
-            </span>
-          </motion.div>
+          <div className="flex items-center gap-3">
+            <motion.div whileHover={{ scale: 1.02 }}>
+              <Image
+                src={logo}
+                alt="Logo Catarina Guimarães"
+                width={40}
+                height={40}
+                className="object-contain drop-shadow hover:rotate-12 transition-transform duration-300"
+                priority
+              />
+            </motion.div>
+            <a href="#">
+              <span
+                className={`${archivo.className} text-transparent bg-gradient-to-r from-main-purple to-main-lilac bg-clip-text text-xl sm:text-2xl font-bold`}
+              >
+                Catarina Guimarães
+              </span>
+            </a>
+          </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
@@ -134,7 +142,7 @@ export default function Header() {
           {/* Right Side Controls */}
           <div className="flex items-center gap-4">
             <ThemeToggle />
-            
+
             {/* Mobile Menu Button */}
             <Button
               onClick={() => setMenuOpen(true)}
