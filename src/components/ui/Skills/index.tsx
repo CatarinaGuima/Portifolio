@@ -90,7 +90,7 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="py-20 sm:py-36 relative overflow-hidden">
+    <section id="skills" className="py-20 sm:py-20 relative overflow-hidden">
       {/* Header */}
       <div className="container mx-auto px-4 text-center relative flex flex-col justify-center items-center mt-4">
         <motion.h2
@@ -114,22 +114,22 @@ export default function Skills() {
       </div>
 
       {/* Skills Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-16">
         {skillCategories.map((category) => (
           <motion.div
             key={category.name}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white/10 dark:bg-black/20 backdrop-blur-lg rounded-xl p-6 shadow-lg border border-gray-200/30 dark:border-gray-700/30 hover:shadow-xl transition-all my-2"
+            className="bg-white/10 dark:bg-black/20 backdrop-blur-lg rounded-xl p-2 shadow-lg border border-gray-200/30 dark:border-gray-700/30 hover:shadow-xl transition-all my-2"
           >
             {/* Category header */}
-            <div className="flex flex-col items-center mb-6 -mt-12">
+            <div className="flex flex-col items-center mb-6 -mt-8">
               <Image
                 src={category.image}
                 alt={category.name}
-                width={64}
-                height={64}
+                width={50}
+                height={50}
                 className="object-contain mb-3"
               />
               <h4 className="text-xl font-bold text-primary">{category.name}</h4>

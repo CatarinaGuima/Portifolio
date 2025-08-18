@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useGithubProjects } from "@/app/api/github/projects";
 import { Loading } from "@/components/ui/Loading";
-import highlightProjects from "@/data/highlightProjects"; 
+import highlightProjects from "@/data/highlightProjects";
 import HighlightsProjectsCard from "../HighlightsProjects";
 import AllProjecstCard from "@/components/ui/AllProjectsCard";
 
@@ -13,7 +13,7 @@ export default function Projects() {
   return (
     <section
       id="projetos"
-      className="relative py-20 sm:py-24 overflow-hidden bg-black/5 dark:bg-white/5"
+      className="relative py-20 sm:py-16 overflow-hidden bg-black/5 dark:bg-white/5"
     >
       <div className="container px-4 mx-auto">
         {/* Content container */}
@@ -23,10 +23,10 @@ export default function Projects() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex items-center justify-center gap-4 mb-8"
+            className="flex items-center justify-center gap-2 mb-8"
           >
             <span className="h-1 w-16 bg-gray-500 rounded-full" />
-            <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] bg-clip-text">
+            <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-main-purple to-main-lilac bg-clip-text">
               Meus Projetos
             </h3>
             <span className="h-1 w-16 bg-gray-500 rounded-full" />
@@ -37,7 +37,7 @@ export default function Projects() {
             <h4 className="text-2xl md:text-3xl text-gray-500 dark:text-gray-500 flex items-center">
               Destaques
             </h4>
-            <span className="h-1 w-16 bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] rounded-full" />
+            <span className="h-1 w-16 bg-gradient-to-r from-main-purple to-main-lilac rounded-full" />
           </div>
 
           {/* Projects content */}
@@ -50,24 +50,20 @@ export default function Projects() {
               Error loading projects: {error}
             </div>
           ) : (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="flex items-center justify-center gap-4 my-[2rem]"
-            >
+            <div className="flex items-center justify-center gap-6 my-[2rem]">
               {highlightProjects.map((project) => (
-                <HighlightsProjectsCard
-                  key={project.title}
-                  imageUrl={project.imageUrl}
-                  title={project.title}
-                  description={project.description}
-                  technologies={project.technologies}
-                  demoUrl={project.demoUrl}
-                  githubUrl={project.githubUrl}
-                />
+                <motion.div whileHover={{ scale: 1.05 }} key={project.title}>
+                  <HighlightsProjectsCard
+                    imageUrl={project.imageUrl}
+                    title={project.title}
+                    description={project.description}
+                    technologies={project.technologies}
+                    demoUrl={project.demoUrl}
+                    githubUrl={project.githubUrl}
+                  />
+                </motion.div>
               ))}
-            </motion.div>
+            </div>
           )}
 
           {/* Decorative elements */}
