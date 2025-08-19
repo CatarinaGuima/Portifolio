@@ -12,6 +12,7 @@ import iconFrameworks from "@/assets/images/frameworks.png";
 import iconDevOps from "@/assets/images/devops.png";
 import iconTools from "@/assets/images/tools.png";
 
+
 interface SkillProps {
   id: string;
   icon: string;
@@ -75,11 +76,15 @@ const skillCategories: SkillCategory[] = [
 ];
 
 export default function Skills() {
+
   const renderIcon = (skill: SkillProps) => {
     const isTrello = skill.icon === "trello";
+
     return (
       <Image
-        src={isTrello ? iconTrello : `https://skillicons.dev/icons?i=${skill.icon}`}
+        src={
+          isTrello ? iconTrello : `https://skillicons.dev/icons?i=${skill.icon}`
+        }
         alt={skill.title}
         width={20}
         height={20}
@@ -90,7 +95,10 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="py-20 sm:py-20 relative overflow-hidden">
+    <section
+      id="skills"
+      className="flex flex-col items-center justify-center py-20 sm:py-20 relative overflow-hidden "
+    >
       {/* Header */}
       <div className="container mx-auto px-4 text-center relative flex flex-col justify-center items-center mt-4">
         <motion.h2
@@ -103,48 +111,59 @@ export default function Skills() {
         </motion.h2>
 
         <motion.h3
-          className="relative z-10 text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] bg-clip-text"
+          className="relative z-10 text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-main-purple to-main-lilac bg-clip-text mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           Habilidades
         </motion.h3>
-
       </div>
 
-      {/* Skills Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-16">
+      {/* Skills */}
+      <div className="flex flex-wrap justify-center gap-6 max-w-6xl w-full px-4">
         {skillCategories.map((category) => (
           <motion.div
+          
             key={category.name}
+            layout
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white/10 dark:bg-black/20 backdrop-blur-lg rounded-xl p-2 shadow-lg border border-gray-200/30 dark:border-gray-700/30 hover:shadow-xl transition-all my-2"
+            className="bg-white/10 dark:bg-black/20 backdrop-blur-lg rounded-xl p-4 shadow-lg border border-gray-200/30 dark:border-gray-700/30 hover:shadow-xl transition-all my-8 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]"
           >
             {/* Category header */}
-            <div className="flex flex-col items-center mb-6 -mt-8">
-              <Image
-                src={category.image}
-                alt={category.name}
-                width={50}
-                height={50}
-                className="object-contain mb-3"
-              />
-              <h4 className="text-xl font-bold text-primary">{category.name}</h4>
+            <div className="flex flex-col items-center mb-4">
+              <div className="bg-white dark:bg-gray-800 p-2 rounded-full shadow-md border border-gray-200/30 dark:border-gray-700/30 -mt-10">
+                <Image
+                  src={category.image}
+                  alt={category.name}
+                  width={40}
+                  height={40}
+                  className="object-contain"
+                />
+              </div>
+              <h4 className="text-xl font-bold text-primary mt-2">
+                {category.name}
+              </h4>
             </div>
 
             {/* Skills list */}
-            <div className="flex flex-wrap gap-3 justify-center">
+            <div className="flex flex-wrap justify-center gap-3">
               {category.skills.map((skill) => (
                 <motion.div
                   key={skill.id}
+                  layout
                   whileHover={{ scale: 1.05 }}
-                  className="flex items-center gap-2 bg-white/20 dark:bg-black/30 rounded-lg px-3 py-2 hover:bg-white/30 dark:hover:bg-black/40 transition-colors"
+                  className="flex items-center gap-2 bg-white/20 dark:bg-black/30 rounded-lg px-3 py-2 hover:bg-white/30 dark:hover:bg-black/40 transition-colors min-w-[8rem]"
                 >
-                  {renderIcon(skill)}
-                  <Badge variant="outline" className="text-sm font-medium">
+                  <div className=" flex items-center justify-center">
+                    {renderIcon(skill)}
+                  </div>
+                  <Badge
+                    variant="outline"
+                    className="text-xs font-medium whitespace-nowrap overflow-hidden text-ellipsis flex-1 text-center"
+                  >
                     {skill.title}
                   </Badge>
                 </motion.div>

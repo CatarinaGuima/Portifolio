@@ -41,30 +41,32 @@ export default function Projects() {
           </div>
 
           {/* Projects content */}
-          {loading ? (
-            <div className="flex justify-center py-8">
-              <Loading size={48} />
-            </div>
-          ) : error ? (
-            <div className="text-center py-12 text-red-500">
-              Error loading projects: {error}
-            </div>
-          ) : (
-            <div className="flex items-center justify-center gap-6 my-[2rem]">
-              {highlightProjects.map((project) => (
-                <motion.div whileHover={{ scale: 1.05 }} key={project.title}>
-                  <HighlightsProjectsCard
-                    imageUrl={project.imageUrl}
-                    title={project.title}
-                    description={project.description}
-                    technologies={project.technologies}
-                    demoUrl={project.demoUrl}
-                    githubUrl={project.githubUrl}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          )}
+          <div className="">
+            {loading ? (
+              <div className="flex justify-center py-8">
+                <Loading size={48} />
+              </div>
+            ) : error ? (
+              <div className="text-center py-12 text-red-500">
+                Error loading projects: {error}
+              </div>
+            ) : (
+              <div className="flex items-center justify-center flex-wrap gap-8 my-[2rem]">
+                {highlightProjects.map((project) => (
+                  <motion.div whileHover={{ scale: 1.05 }} key={project.title}>
+                    <HighlightsProjectsCard
+                      imageUrl={project.imageUrl}
+                      title={project.title}
+                      description={project.description}
+                      technologies={project.technologies}
+                      demoUrl={project.demoUrl}
+                      githubUrl={project.githubUrl}
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            )}
+          </div>
 
           {/* Decorative elements */}
           <div className="flex flex-col items-start gap-2 mx-[8rem] mt-12 mb-8">

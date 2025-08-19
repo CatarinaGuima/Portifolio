@@ -13,12 +13,6 @@ const archivo = Archivo_Black({
   preload: true,
 });
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, delay },
-});
-
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -27,11 +21,13 @@ export default function Footer() {
       icon: <FiGithub size={20} />,
       href: "https://github.com/catarinaguima",
       label: "GitHub",
+      rel: "me",
     },
     {
       icon: <FiLinkedin size={20} />,
       href: "https://www.linkedin.com/in/catarinaguimaraess/",
       label: "LinkedIn",
+      rel: "me",
     },
     {
       icon: <FiMail size={20} />,
@@ -42,15 +38,25 @@ export default function Footer() {
 
   return (
     <footer id="contato" className="border-t shadow-lg" aria-labelledby="footer-heading">
-      <div><Image src={lineBar}
-                alt="Linha decorativa"
-                className="object-contain drop-shadow transition-transform duration-300 hover:scale-110"
-                priority/></div>
+      {/* heading semântico invisível para acessibilidade */}
+      <h2 id="footer-heading" className="sr-only">Rodapé</h2>
+
+      {/* Linha decorativa */}
+      <div>
+        <Image
+          src={lineBar}
+          alt="Linha decorativa"
+          className="object-contain drop-shadow transition-transform duration-300 hover:scale-110 w-full"
+          priority
+        />
+      </div>
+
       <div className="container mx-auto px-4 py-6">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 mx-[8rem]">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 max-w-5xl mx-auto">
+          
           {/* Branding */}
-          <motion.div {...fadeUp(0)}>
-            <div className="flex items-center gap-2">
+          <motion.div>
+            <div className="flex items-center justify-center gap-2">
               <Image
                 src={logo}
                 alt="Logo Catarina Guimarães"
@@ -73,25 +79,24 @@ export default function Footer() {
           {/* Social Links */}
           <motion.div
             className="flex flex-col items-center justify-center space-y-4"
-            {...fadeUp(0.3)}
           >
             <p className="text-gray-600 dark:text-gray-300 font-medium">
               Entre em contato comigo!
             </p>
-            <div className="flex item justify-center gap-4">
-              {socialLinks.map((link, index) => (
+            <div className="flex items-center justify-center gap-4">
+              {socialLinks.map((link) => (
                 <motion.a
                   key={link.label}
                   href={link.href}
                   aria-label={link.label}
                   title={link.label}
+                  rel={link.rel || "noopener noreferrer"}
                   className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 
-                             hover:bg-[#8f00ff] dark:hover:bg-[#8f00ff] hover:text-white transition-all duration-300"
+                             hover:bg-[#8f00ff] dark:hover:bg-[#8f00ff]/80 hover:text-white transition-all duration-300"
                   target="_blank"
-                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  {...fadeUp(0.5 + index * 0.1)}
+                 
                 >
                   {link.icon}
                 </motion.a>
@@ -103,7 +108,7 @@ export default function Footer() {
         {/* Copyright */}
         <motion.p
           className="text-gray-500 dark:text-gray-400 text-center mt-8"
-          {...fadeUp(0.6)}
+        
         >
           © {currentYear} Catarina Guimarães. Todos os direitos reservados.
         </motion.p>
