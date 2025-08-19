@@ -45,7 +45,7 @@ export default function AllProjectsCarousel({
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4">
+    <div className="flex flex-col items-center justify-center w-full max-w-6xl mx-auto px-4">
       {/* Container do Carrossel */}
       <Carousel
         setApi={setApi}

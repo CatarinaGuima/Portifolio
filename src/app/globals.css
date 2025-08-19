@@ -1,4 +1,6 @@
 /* Tailwind v4 core */
+
+@tailwind utilities;
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -169,5 +171,37 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #f1f1f1;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #8f00ff;
+    border-radius: 100vh;
+    border: 2px solid #f1f1f1;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6a00b8;
+  }
+
+  /* Para modo escuro */
+  .dark .scrollbar::-webkit-scrollbar-thumb {
+    background: #a6d3ff;
+    border-color: #1e1e1e;
+  }
+
+  .dark .scrollbar::-webkit-scrollbar-track {
+    background: #1e1e1e;
   }
 }

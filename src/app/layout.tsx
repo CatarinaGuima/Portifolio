@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body
-        className={`${nunito.className} min-h-screen bg-cover bg-center bg-no-repeat`}
+        className={`${nunito.className} min-h-screen bg-cover bg-center bg-no-repeat scrollbar`}
         style={{
           backgroundImage: "url('/background-hero.svg')",
         }}
@@ -32,7 +32,6 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <AppLoader>
             <Header />
-
             {children}
             <Footer />
           </AppLoader>
