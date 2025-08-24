@@ -14,26 +14,13 @@ export default function Hero() {
   const firstName = userName?.split(" ")[0]; {/* Usa o valor do estado do Redux */}
   const lastName = userName?.slice(8); {/* Usa o valor do estado do Redux */}
  
-  const handleWhatsAppClick = async () => {
-    const message =
-      "Olá Catarina! Vi seu portfólio e gostaria de conversar sobre.";
+ const handleWhatsAppClick = () => {
+  const message = "Olá Catarina! Vi seu portfólio e gostaria de conversar sobre.";
+  const url = `/api/whatsapp?message=${encodeURIComponent(message)}`;
 
-    try {
-      // Faz requisição POST para a rota serverless
-      const response = await fetch("/api/whatsapp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message }),
-      });
+  window.open(url, "_blank"); // abre a rota que redireciona para o WhatsApp
+};
 
-      // A rota faz redirect, então abrimos o mesmo endpoint
-      if (response.redirected) {
-        window.open(response.url, "_blank");
-      }
-    } catch (error) {
-      console.error("Erro ao abrir WhatsApp:", error);
-    }
-  };
 
   const handleDownloadCV = () => {
     const link = document.createElement("a");
