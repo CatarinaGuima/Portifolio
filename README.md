@@ -18,30 +18,43 @@ Aqui você encontrará meus principais projetos, minhas habilidades técnicas e 
 Este portfólio foi desenvolvido com foco em performance, responsividade e design moderno.  
 Aqui estão as principais tecnologias e ferramentas utilizadas:
 
+- ## 🛠️ Tecnologias Utilizadas  
+
 ### **Frontend**
-- ⚡ **[Next.js](https://nextjs.org/)** – Framework React para aplicações web rápidas e otimizadas.
-- 🎨 **[Tailwind CSS](https://tailwindcss.com/)** – Estilização com classes utilitárias e design responsivo.
-- 🖼️ **Next/Image** – Otimização de imagens para melhor performance.
-- 🎠 **Carousel (shadcn/ui)** – Exibição interativa dos projetos.
-- 📱 **Design Responsivo** – Adaptado para dispositivos móveis e desktops.
+[![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/) – Framework React para aplicações web rápidas e otimizadas.
+[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/) – Estilização com classes utilitárias e design responsivo.
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/) – Tipagem estática para maior segurança no código. 
+[![shadcn/ui](https://img.shields.io/badge/shadcn/ui-000000?style=for-the-badge&logo=radix-ui&logoColor=white)](https://ui.shadcn.com/)  
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)  
 
 ### **Integrações**
-- 🔗 **GitHub API** – Consumo de dados para exibir meus repositórios automaticamente.
+[![GitHub API](https://img.shields.io/badge/GitHub_API-181717?style=for-the-badge&logo=github&logoColor=white)](https://docs.github.com/en/rest) – Consumo de dados para exibir meus repositórios automaticamente.
 
-### **Ferramentas de Desenvolvimento**
-- 💻 **TypeScript** – Tipagem estática para maior segurança no código.
-- 🛠️ **ESLint & Prettier** – Padronização e qualidade do código.
-- 🧪 **Vercel/Netlify** – Deploy rápido e integrado.
-- 🖌️ **Figma** – Prototipagem e definição da identidade visual.
+### **Ferramentas & Deploy**
+[![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)](https://eslint.org/)  – Qualidade do código.
+[![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=white)](https://prettier.io/)  - Padronização.
+[![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://www.netlify.com/) – Deploy rápido e integrado. 
+
+
+---
+
+## 📂 Estrutura do Portfólio  
+
+📌 O portfólio foi pensado para ser **simples, direto e interativo**:  
+- 🏠 **Página Inicial** — Apresentação e resumo sobre mim.  
+- 💼 **Projetos** — Listagem interativa com meus principais trabalhos.  
+- 📬 **Contato** — Links para minhas redes sociais e e-mail.  
 
 ---
 
-## 📂 Estrutura do Portfólio
-- **Página Inicial** – Apresentação e breve resumo sobre mim.
-- **Seção de Projetos** – Lista interativa com meus principais trabalhos.
-- **Contato** – Links para redes sociais e e-mail.
 
----
+## 📸 Preview  
+
+✨ *Uma prévia do design responsivo e moderno do portfólio.*  
+<div align="center">
+---<img width="1080" height="1080" alt="mockup" src="https://github.com/user-attachments/assets/7112e2e6-a2a7-46d8-a44d-025f60c7798d" />
+</div>
+
 
 ## 📬 Contato
 Se quiser trocar ideias, colaborar ou apenas bater um papo, você pode me encontrar em:
