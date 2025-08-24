@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
@@ -5,6 +6,7 @@ import { ThemeProvider } from "next-themes";
 import Header from "@/components/ui/Header";
 import Footer from "@/components/ui/Footer";
 import { AppLoader } from "@/components/ui/Loading/loader";
+import ReduxProvider from "@/providers/ReduxProvider";
 
 export const metadata: Metadata = {
   title: "Portfólio | Catarina Guimarães",
@@ -45,13 +47,15 @@ export default function RootLayout({
           backgroundImage: "url('/background-hero.svg')",
         }}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <AppLoader>
-            <Header />
-            {children}
-            <Footer />
-          </AppLoader>
-        </ThemeProvider>
+         <ReduxProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <AppLoader>
+              <Header />
+              {children}
+              <Footer />
+            </AppLoader>
+          </ThemeProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

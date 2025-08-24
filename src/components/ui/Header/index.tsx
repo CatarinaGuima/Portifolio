@@ -8,6 +8,9 @@ import { Archivo_Black } from "next/font/google";
 import MenuSidebar from "@/components/ui/Sidebar/menuSidebar";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Button } from "../Button";
+import { useDispatch, useSelector } from "react-redux";
+import { setName } from "@/redux/UserName/userName-slice"; 
+import { RootState } from "../../../redux/store"; 
 
 const archivo = Archivo_Black({
   weight: "400",
@@ -23,6 +26,9 @@ const links = [
 ];
 
 export default function Header() {
+  const dispatch = useDispatch();
+  const userName = useSelector((state: RootState) => state.user.value); // Acessa o nome do usuário
+
   const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -30,6 +36,8 @@ export default function Header() {
 
   useEffect(() => {
     setMounted(true);
+    // Dispatch da action para definir o nome
+    dispatch(setName());
 
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
@@ -56,7 +64,7 @@ export default function Header() {
       observer.disconnect();
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [dispatch]); // Adicione dispatch como dependência
 
   if (!mounted) {
     return (
@@ -109,7 +117,7 @@ export default function Header() {
               <span
                 className={`${archivo.className} text-transparent bg-gradient-to-r from-main-purple to-main-lilac bg-clip-text text-xl sm:text-2xl font-bold`}
               >
-                Catarina Guimarães
+                {userName} {/* Use o valor do estado do Redux */}
               </span>
             </a>
           </div>
