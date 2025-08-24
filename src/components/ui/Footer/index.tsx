@@ -6,6 +6,8 @@ import Image from "next/image";
 import logo from "@/assets/images/logo.png";
 import lineBar from "@/assets/images/lineBar.png";
 import { Archivo_Black } from "next/font/google";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
 
 const archivo = Archivo_Black({
   weight: "400",
@@ -14,6 +16,8 @@ const archivo = Archivo_Black({
 });
 
 export default function Footer() {
+
+  const userName = useSelector((state: RootState) => state.user.value);
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -68,7 +72,7 @@ export default function Footer() {
               <span
                 className={`${archivo.className} text-transparent bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] bg-clip-text text-lg font-bold`}
               >
-                Catarina Guimarães
+                {userName}
               </span>
             </div>
             <p className="flex items-center justify-center text-[#94a3b8] font-semibold text-sm">

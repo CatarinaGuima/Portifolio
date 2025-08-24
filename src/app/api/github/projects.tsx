@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 export type Project = {
   id: string;
@@ -20,7 +21,7 @@ type GithubRepo = {
   homepage: string | null;
   language: string | null;
   stargazers_count: number;
-  fork: number,
+  fork: number;
   updated_at: string;
   topics?: string[];
 };
@@ -36,22 +37,20 @@ export function useGithubProjects(username: string) {
         setLoading(true);
         setError(null);
         
-        const res = await fetch(
-          `https://api.github.com/users/${username}/repos?sort=updated&direction=desc`
+        const response = await axios.get<GithubRepo[]>(
+          `https://api.github.com/users/${username}/repos`,
+          {
+            params: {
+              sort: "updated",
+              direction: "desc"
+            }
+          }
         );
 
-        if (!res.ok) {
-          throw new Error(
-            res.status === 404 
-              ? "User not found" 
-              : `Failed to fetch: ${res.status}`
-          );
-        }
-
-        const data: GithubRepo[] = await res.json();
+        const data = response.data;
 
         const mappedProjects: Project[] = data
-          .filter(repo => !repo.fork) 
+          .filter(repo => !repo.fork)
           .map((repo) => ({
             id: repo.id.toString(),
             title: formatProjectName(repo.name),
@@ -65,7 +64,17 @@ export function useGithubProjects(username: string) {
 
         setProjects(mappedProjects);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Unknown error occurred");
+        if (axios.isAxiosError(err)) {
+          setError(
+            err.response?.status === 404
+              ? "User not found"
+              : err.response?.status
+                ? `Failed to fetch: ${err.response.status}`
+                : err.message
+          );
+        } else {
+          setError("Unknown error occurred");
+        }
       } finally {
         setLoading(false);
       }

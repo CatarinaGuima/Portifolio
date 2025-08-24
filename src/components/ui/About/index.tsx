@@ -51,7 +51,7 @@ export default function About() {
               words={["Um pouco mais sobre mim!"]}
               loop={false}
               cursor
-              cursorColor="main-purple"
+              cursorColor="#8f00ff"
               cursorStyle="|"
               typeSpeed={70}
               deleteSpeed={50}

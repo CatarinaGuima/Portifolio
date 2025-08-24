@@ -5,27 +5,35 @@ import { Button } from "../Button";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 import { SlArrowDown } from "react-icons/sl";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
 
 export default function Hero() {
+  
+  const userName = useSelector((state: RootState) => state.user.value);
+  const firstName = userName?.split(" ")[0]; {/* Usa o valor do estado do Redux */}
+  const lastName = userName?.slice(8); {/* Usa o valor do estado do Redux */}
+ 
   const handleWhatsAppClick = async () => {
-  const message = "Olá Catarina! Vi seu portfólio e gostaria de conversar sobre.";
+    const message =
+      "Olá Catarina! Vi seu portfólio e gostaria de conversar sobre.";
 
-  try {
-    // Faz requisição POST para a rota serverless
-    const response = await fetch("/api/whatsapp", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message }),
-    });
+    try {
+      // Faz requisição POST para a rota serverless
+      const response = await fetch("/api/whatsapp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message }),
+      });
 
-    // A rota faz redirect, então abrimos o mesmo endpoint
-    if (response.redirected) {
-      window.open(response.url, "_blank");
+      // A rota faz redirect, então abrimos o mesmo endpoint
+      if (response.redirected) {
+        window.open(response.url, "_blank");
+      }
+    } catch (error) {
+      console.error("Erro ao abrir WhatsApp:", error);
     }
-  } catch (error) {
-    console.error("Erro ao abrir WhatsApp:", error);
-  }
-};
+  };
 
   const handleDownloadCV = () => {
     const link = document.createElement("a");
@@ -62,10 +70,10 @@ export default function Hero() {
               transition={{ delay: 0.3 }}
             >
               <span className="text-transparent bg-gradient-to-r from-main-purple to-main-lilac bg-clip-text">
-                Catarina
+                {firstName}
               </span>
               <span className="text-transparent bg-gradient-to-r from-main-lilac to-main-purple bg-clip-text">
-                Guimarães
+               {lastName}
               </span>
             </motion.span>
           </motion.h1>
