@@ -36,7 +36,7 @@ export default function About() {
   return (
     <section
       id="sobre"
-      className="relative flex items-center justify-center py-12 sm:py-24 bg-black/5 dark:bg-white/5 min-h-screen w-full"
+      className="relative flex items-center justify-center py-12 sm:py-24 bg-background/20 dark:bg-background/5 min-h-screen w-full"
     >
       <div className=" max-w-4xl px-6 mx-auto">
         {/* Animated Heading */}
@@ -46,7 +46,7 @@ export default function About() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-transparent bg-gradient-to-r from-main-purple to-main-lilac bg-clip-text text-3xl sm:text-5xl font-bold leading-tight">
+          <h2 className="text-transparent bg-gradient-to-r from-text-primary to-text-secondary bg-clip-text text-3xl sm:text-5xl font-bold leading-tight">
             <Typewriter
               words={["Um pouco mais sobre mim!"]}
               loop={false}
@@ -61,7 +61,7 @@ export default function About() {
         </motion.div>
 
         {/* Content */}
-        <div className="text-lg font-medium text-gray-500 dark:text-gray-300 space-y-6 text-justify">
+        <div className="text-lg font-medium text-muted-foreground dark:text-muted-foreground space-y-6 text-justify">
           {/* First Paragraph */}
 
           <motion.p
@@ -129,10 +129,10 @@ export default function About() {
                 className="flex items-center gap-2 group"
                 whileHover={{ y: -3 }}
               >
-                <span className=" group-hover:text-[#6a00b8] transition-colors">
+                <span className=" group-hover:text-primary transition-colors">
                   {link.icon}
                 </span>
-                <span className="text-primary  group-hover:text-main-purple font-semibold transition-colors">
+                <span className="text-primary group-hover:text-text-primary font-semibold transition-colors">
                   {link.label}
                 </span>
               </motion.a>

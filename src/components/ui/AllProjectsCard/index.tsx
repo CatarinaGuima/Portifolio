@@ -114,7 +114,7 @@ export default function AllProjectsCarousel({
                           )}
                           {project.repo && (
                             <a
-                              className="text-sm px-3 py-1 border rounded-md hover:bg-accent transition-colors w-1/2 flex items-center justify-center gap-2"
+                              className="text-sm px-3 py-1 border rounded-md bg-accent/50 hover:bg-accent transition-colors w-1/2 flex items-center justify-center gap-2"
                               href={project.repo}
                               target="_blank"
                               rel="noreferrer"

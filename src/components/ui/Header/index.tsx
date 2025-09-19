@@ -68,23 +68,23 @@ export default function Header() {
 
   if (!mounted) {
     return (
-      <header className="sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-transparent">
+      <header className="sticky top-0 z-50  backdrop-blur-md border-b border-transparent">
         <div className="container mx-auto flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gray-200 dark:bg-gray-800 rounded-full animate-pulse" />
-            <div className="hidden sm:block w-32 h-6 bg-gray-200 dark:bg-gray-800 rounded animate-pulse" />
+            <div className="w-10 h-10 rounded-full animate-pulse" />
+            <div className="hidden sm:block w-32 h-6  rounded animate-pulse" />
           </div>
           <div className="flex items-center gap-4">
             <div className="hidden md:flex gap-6">
               {links.map((_, i) => (
                 <div
                   key={i}
-                  className="w-12 h-6 bg-gray-200 dark:bg-gray-800 rounded animate-pulse"
+                  className="w-12 h-6 bg-muted-foreground dark:bg-muted-foreground rounded animate-pulse"
                 />
               ))}
             </div>
-            <div className="w-6 h-6 bg-gray-200 dark:bg-gray-800 rounded-full animate-pulse" />
-            <div className="w-8 h-8 bg-gray-200 dark:bg-gray-800 rounded-full animate-pulse md:hidden" />
+            <div className="w-6 h-6 bg-muted-foreground dark:bg-muted-foregroundrounded-full animate-pulse" />
+            <div className="w-8 h-8 bg-muted-foreground dark:bg-muted-foreground rounded-full animate-pulse md:hidden" />
           </div>
         </div>
       </header>
@@ -94,9 +94,9 @@ export default function Header() {
   return (
     <>
       <header
-        className={`sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b transition-all duration-300 ${
+        className={`sticky top-0 z-50 bg-background/80 dark:bg-background/80 backdrop-blur-md border-b transition-all duration-300 ${
           scrolled
-            ? "border-gray-200 dark:border-gray-800 shadow-sm"
+            ? "shadow-sm"
             : "border-transparent"
         }`}
       >
@@ -115,9 +115,9 @@ export default function Header() {
             </motion.div>
             <a href="#">
               <span
-                className={`${archivo.className} text-transparent bg-gradient-to-r from-main-purple to-main-lilac bg-clip-text text-xl sm:text-2xl font-bold`}
+                className={`${archivo.className} text-transparent bg-gradient-to-r from-text-primary to-text-secondary bg-clip-text text-xl sm:text-2xl font-bold`}
               >
-                {userName} {/* Use o valor do estado do Redux */}
+                {userName} {/*Valor do estado do Redux */}
               </span>
             </a>
           </div>
@@ -130,8 +130,8 @@ export default function Header() {
                 href={link.href}
                 className={`relative px-1 py-2 font-semibold text-md transition-colors ${
                   activeSection === link.href
-                    ? "text-main-purple font-semibold"
-                    : "text-gray-500 hover:text-main-purple dark:text-gray-500 dark:hover:text-main-purple"
+                    ? "text-text-primary font-semibold"
+                    : "text-sidebar-ring hover:text-text-primary dark:text-ring dark:hover:text-text-primary"
                 }`}
                 whileHover={{ scale: 1.02 }}
               >
@@ -139,7 +139,7 @@ export default function Header() {
                 {activeSection === link.href && (
                   <motion.span
                     layoutId="navUnderline"
-                    className="absolute left-0 bottom-0 w-full h-0.5 bg-main-purple dark:bg-main-purple"
+                    className="absolute left-0 bottom-0 w-full h-0.5 bg-text-primary dark:bg-text-primary"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
@@ -154,7 +154,7 @@ export default function Header() {
             {/* Mobile Menu Button */}
             <Button
               onClick={() => setMenuOpen(true)}
-              className="md:hidden p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 transition"
+              className="md:hidden p-2 rounded-md hover:bg-secondary dark:hover:bg-secondary transition"
               aria-label="Abrir menu"
               variant="outline"
             >

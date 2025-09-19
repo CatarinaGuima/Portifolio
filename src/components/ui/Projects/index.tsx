@@ -13,7 +13,7 @@ export default function Projects() {
   return (
     <section
       id="projetos"
-      className="relative py-16 sm:py-20 overflow-hidden bg-black/5 dark:bg-white/5"
+      className="relative py-16 sm:py-20 overflow-hidden bg-secondary-foreground/5 dark:bg-secondary-foreground/5"
     >
       <div className="container px-4 mx-auto">
         {/* Content container */}
@@ -27,7 +27,7 @@ export default function Projects() {
           >
             <div className="flex items-center justify-center gap-4 mb-4">
               <span className="h-1 w-12 bg-gray-400 rounded-full" />
-              <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-main-purple to-main-lilac bg-clip-text text-center">
+              <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-text-primary to-text-secondary bg-clip-text text-center">
                 Meus Projetos
               </h3>
               <span className="h-1 w-12 bg-gray-400 rounded-full" />
@@ -48,7 +48,7 @@ export default function Projects() {
               <h4 className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300">
                 Destaques
               </h4>
-              <span className="h-1 w-16 bg-gradient-to-r from-main-purple to-main-lilac rounded-full" />
+              <span className="h-1 w-16 bg-gradient-to-r from-text-primary to-text-secondary rounded-full" />
             </div>
 
             {loading ? (
@@ -97,7 +97,7 @@ export default function Projects() {
               <h4 className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300">
                 Todos os Projetos
               </h4>
-              <span className="h-1 w-16 bg-gradient-to-r from-main-purple to-main-lilac rounded-full" />
+              <span className="h-1 w-16 bg-gradient-to-r from-text-primary to-text-secondary rounded-full" />
             </div>
 
             {loading ? (

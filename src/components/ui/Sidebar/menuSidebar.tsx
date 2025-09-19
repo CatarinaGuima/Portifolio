@@ -105,7 +105,7 @@ export default function MenuSidebar({
                       onClick={onClose}
                       className={`block px-4 py-3 rounded-lg transition-all duration-200 ${
                         activeSection === link.href
-                          ? "bg-main-purple/10 text-main-purple dark:text-main-lilac font-semibold"
+                          ? "bg-text-primary/10 text-text-primary dark:text-text-secondary font-semibold"
                           : "hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-800 dark:text-gray-200"
                       }`}
                     >

@@ -56,10 +56,10 @@ export default function Hero() {
               animate={{ y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <span className="text-transparent bg-gradient-to-r from-main-purple to-main-lilac bg-clip-text">
+              <span className="text-transparent bg-gradient-to-r from-text-primary to-text-secondary bg-clip-text">
                 {firstName}
               </span>
-              <span className="text-transparent bg-gradient-to-r from-main-lilac to-main-purple bg-clip-text">
+              <span className="text-transparent bg-gradient-to-r from-text-secondary to-text-primary bg-clip-text">
                {lastName}
               </span>
             </motion.span>
@@ -71,10 +71,10 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <div className="text-[#94a3b8] font-extrabold text-xl mb-6 md:mb-8 text-center sm:text-left">
+            <div className="text-text-subtitle font-extrabold text-xl mb-6 md:mb-8 text-center sm:text-left">
               Desenvolvedora Front-end
             </div>
-            <p className="leading-relaxed text-justify w-11/12 mx-auto sm:mx-0">
+            <p className="leading-relaxed text-justify w-11/12 mx-auto sm:mx-0 ">
               Especialista em criar experiências digitais performáticas e
               acessíveis com{" "}
               <span className="text-primary font-bold">React</span>,{" "}
@@ -120,7 +120,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative order-1 md:order-2 md:mb-0"
         >
-          <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-96 lg:h-96 rounded-2xl overflow-hidden border-4 border-purple-500/20 bg-gradient-to-br from-purple-500/10 to-blue-400/10 shadow-xl">
+          <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-96 lg:h-96 rounded-2xl overflow-hidden border-4 border-chart-5/20 bg-gradient-to-br from-chart-5/10 to-sidebar-primary/10 shadow-xl">
             <Image
               src="/avatar.png"
               width={500}
@@ -130,12 +130,12 @@ export default function Hero() {
               priority
               quality={100}
             />
-            <div className="absolute inset-0 bg-white/5 mix-blend-overlay" />
+            <div className="absolute inset-0 bg-background/5 mix-blend-overlay" />
           </div>
 
           {/* Decorative elements */}
-          <div className="absolute -z-10 -top-8 -right-8 w-32 h-32 rounded-full bg-purple-500/10 blur-xl" />
-          <div className="absolute -z-10 -bottom-4 -left-4 w-24 h-24 rounded-full bg-blue-400/20 blur-xl" />
+          <div className="absolute -z-10 -top-8 -right-8 w-32 h-32 rounded-full bg-chart-5/10 blur-xl" />
+          <div className="absolute -z-10 -bottom-4 -left-4 w-24 h-24 rounded-full bg-chart-5/20 blur-xl" />
         </motion.figure>
       </div>
       {/* Scroll indicator - posicionamento absoluto relativo à section */}

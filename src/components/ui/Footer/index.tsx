@@ -70,12 +70,12 @@ export default function Footer() {
                 priority
               />
               <span
-                className={`${archivo.className} text-transparent bg-gradient-to-r from-[#8f00ff] to-[#a6d3ff] bg-clip-text text-lg font-bold`}
+                className={`${archivo.className} text-transparent bg-gradient-to-r from-text-primary to-text-secondary bg-clip-text text-lg font-bold`}
               >
                 {userName}
               </span>
             </div>
-            <p className="flex items-center justify-center text-[#94a3b8] font-semibold text-sm">
+            <p className="flex items-center justify-center text-text-subtitle font-semibold text-sm">
               Desenvolvedora Front-end
             </p>
           </motion.div>
@@ -84,7 +84,7 @@ export default function Footer() {
           <motion.div
             className="flex flex-col items-center justify-center space-y-4"
           >
-            <p className="text-gray-600 dark:text-gray-300 font-medium">
+            <p className="text-muted-foreground dark:text-muted-foregroud/30 font-medium">
               Entre em contato comigo!
             </p>
             <div className="flex items-center justify-center gap-4">
@@ -96,7 +96,7 @@ export default function Footer() {
                   title={link.label}
                   rel={link.rel || "noopener noreferrer"}
                   className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 
-                             hover:bg-[#8f00ff] dark:hover:bg-[#8f00ff]/80 hover:text-white transition-all duration-300"
+                             hover:bg-text-primary dark:hover:bg-text-primary/80 hover:text-muted transition-all duration-300"
                   target="_blank"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
