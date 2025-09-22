@@ -62,6 +62,8 @@
   --sidebar-accent-foreground: #09090b;
   --sidebar-border: #e4e4e7;
   --sidebar-ring: #9f9fa9;
+
+  --color-theme: #d5d5d5;
 }
 
 /* =======================
@@ -117,6 +119,8 @@
   --sidebar-accent-foreground: #fafafa;
   --sidebar-border: #2d2d2d;
   --sidebar-ring: #71717b;
+
+  --color-theme: #DEDEDE;
 }
 
 /* =======================
@@ -174,6 +178,8 @@
   --color-text-secondary: var(--text-secondary);
   --color-text-subtitle: var(--text-subtitle);
   --color-text-paragraph: var(--text-paragraph);
+
+  --color-color-theme: var(--color-theme);
 }
 
 /* =======================

@@ -127,7 +127,7 @@ export default function Skills() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-card dark:bg-background/20 backdrop-blur-lg rounded-xl p-4 shadow-lg border border-muted-foreground/30 dark:border-muted-foreground/30 hover:shadow-xl transition-all w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] mt-16"
+            className="bg-card/50 dark:bg-background/20 backdrop-blur-lg rounded-xl p-4 shadow-lg border border-muted-foreground/30 dark:border-muted-foreground/30 hover:shadow-xl transition-all w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] mt-16"
           >
             {/* Category header */}
             <div className="flex flex-col items-center mb-4">

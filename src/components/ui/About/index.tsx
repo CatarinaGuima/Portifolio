@@ -38,7 +38,7 @@ export default function About() {
       id="sobre"
       className="relative flex items-center justify-center py-12 sm:py-24 bg-background/20 dark:bg-background/5 min-h-screen w-full"
     >
-      <div className=" max-w-4xl px-6 mx-auto">
+      <div className="max-w-4xl px-6 mx-auto">
         {/* Animated Heading */}
         <motion.div
           className="mb-12 text-center"
@@ -46,7 +46,7 @@ export default function About() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-transparent bg-gradient-to-r from-text-primary to-text-secondary bg-clip-text text-3xl sm:text-5xl font-bold leading-tight">
+          <h2 className="whitespace-nowrap text-transparent bg-gradient-to-r from-text-primary to-text-secondary bg-clip-text text-2xl sm:text-4xl md:text-5xl font-bold leading-tight text-center">
             <Typewriter
               words={["Um pouco mais sobre mim!"]}
               loop={false}
@@ -61,7 +61,7 @@ export default function About() {
         </motion.div>
 
         {/* Content */}
-        <div className="text-lg font-medium text-muted-foreground dark:text-muted-foreground space-y-6 text-justify">
+        <div className="text-sm font-medium text-muted-foreground dark:text-muted-foreground space-y-6 text-justify sm:text-lg">
           {/* First Paragraph */}
 
           <motion.p
@@ -75,9 +75,7 @@ export default function About() {
             explorando tecnologias como{" "}
             {highlightedTech.map((tech, index) => (
               <React.Fragment key={tech}>
-                <span className="text-primary font-bold">
-                  {tech}
-                </span>
+                <span className="text-primary font-bold">{tech}</span>
                 {index < highlightedTech.length - 1 ? ", " : " "}
               </React.Fragment>
             ))}
@@ -93,11 +91,9 @@ export default function About() {
             className="indent-8 leading-relaxed"
           >
             Dentre os meus projetos mais relevantes, destaco{" "}
-           {highlightedProjects.map((project, index) => (
+            {highlightedProjects.map((project, index) => (
               <React.Fragment key={project}>
-                <span className="text-primary font-bold">
-                  {project}
-                </span>
+                <span className="text-primary font-bold">{project}</span>
                 {index < highlightedProjects.length - 1 ? " e o " : ". "}
               </React.Fragment>
             ))}
@@ -107,7 +103,7 @@ export default function About() {
           </motion.p>
         </div>
 
-         {/* Social Links */}
+        {/* Social Links */}
         <motion.div
           className="mt-16 text-center"
           initial={{ opacity: 0 }}

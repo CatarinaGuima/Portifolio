@@ -32,7 +32,7 @@ export default function HighlightsProjectsCard({
   demoUrl,
 }: ProjectCardProps) {
   return (
-    <Card className="group hover:shadow-xl hover:scale-[1.02] transition-all duration-300 w-full max-w-sm h-full flex flex-col rounded-2xl border border-gray-200 bg-card">
+    <Card className="group hover:shadow-xl hover:scale-[1.02] transition-all duration-300 w-full max-w-sm h-full flex flex-col rounded-2xl border border-gray-200 bg-card/50">
       {/* Image section */}
       <div className="relative h-48 w-full overflow-hidden rounded-t-2xl">
         {imageUrl && (

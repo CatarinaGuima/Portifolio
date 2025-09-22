@@ -71,7 +71,7 @@ export default function AllProjectsCarousel({
               >
                 <Card className="h-full border-border/50 hover:border-primary/50 transition-colors">
                   <CardContent className="p-0 flex flex-col h-full">
-                    <article className="rounded-xl overflow-hidden bg-card flex flex-col h-full">
+                    <article className="rounded-xl overflow-hidden bg-card/50 flex flex-col h-full">
                       {project.image && (
                         <div className="relative h-48 w-full">
                           <Image
