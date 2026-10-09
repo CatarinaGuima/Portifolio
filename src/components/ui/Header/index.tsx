@@ -1,176 +1,136 @@
 "use client";
+
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import ThemeToggle from "../ThemeToggle";
 import Image from "next/image";
+import { FiMenu, FiX } from "react-icons/fi";
 import logo from "@/assets/images/logo.png";
-import { Archivo_Black } from "next/font/google";
-import MenuSidebar from "@/components/ui/Sidebar/menuSidebar";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { Button } from "../Button";
-import { useDispatch, useSelector } from "react-redux";
-import { setName } from "@/redux/UserName/userName-slice"; 
-import { RootState } from "../../../redux/store"; 
-
-const archivo = Archivo_Black({
-  weight: "400",
-  subsets: ["latin"],
-  preload: true,
-});
-
-const links = [
-  { href: "#sobre", label: "Sobre" },
-  { href: "#skills", label: "Habilidades" },
-  { href: "#projetos", label: "Projetos" },
-  { href: "#contato", label: "Contato" },
-];
+import ThemeToggle from "../ThemeToggle";
+import { navLinks, site } from "@/data/site";
 
 export default function Header() {
-  const dispatch = useDispatch();
-  const userName = useSelector((state: RootState) => state.user.value); // Acessa o nome do usuário
-
-  const [mounted, setMounted] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState("");
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    // Dispatch da action para definir o nome
-    dispatch(setName());
-
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8);
+      // No topo (hero) nenhuma seção do menu está ativa
+      if (window.scrollY < 120) setActive("");
     };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
 
+    // A seção "ativa" é a que cruza a faixa central da tela
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(`#${entry.target.id}`);
-          }
+          if (entry.isIntersecting) setActive(`#${entry.target.id}`);
         });
       },
-      { threshold: 0.5 }
+      { rootMargin: "-45% 0px -50% 0px" },
     );
-
-    links.forEach((link) => {
+    navLinks.forEach((link) => {
       const section = document.querySelector(link.href);
       if (section) observer.observe(section);
     });
 
-    window.addEventListener("scroll", handleScroll);
     return () => {
+      window.removeEventListener("scroll", onScroll);
       observer.disconnect();
-      window.removeEventListener("scroll", handleScroll);
     };
-  }, [dispatch]); // Adicione dispatch como dependência
+  }, []);
 
-  if (!mounted) {
-    return (
-      <header className="sticky top-0 z-50  backdrop-blur-md border-b border-transparent">
-        <div className="container mx-auto flex items-center justify-between px-4 py-3">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full animate-pulse" />
-            <div className="hidden sm:block w-32 h-6  rounded animate-pulse" />
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="hidden md:flex gap-6">
-              {links.map((_, i) => (
-                <div
-                  key={i}
-                  className="w-12 h-6 bg-muted-foreground dark:bg-muted-foreground rounded animate-pulse"
-                />
-              ))}
-            </div>
-            <div className="w-6 h-6 bg-muted-foreground dark:bg-muted-foregroundrounded-full animate-pulse" />
-            <div className="w-8 h-8 bg-muted-foreground dark:bg-muted-foreground rounded-full animate-pulse md:hidden" />
-          </div>
-        </div>
-      </header>
-    );
-  }
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
 
   return (
-    <>
-      <header
-        className={`sticky top-0 z-50 bg-background/80 dark:bg-background/80 backdrop-blur-md border-b transition-all duration-300 ${
-          scrolled
-            ? "shadow-sm"
-            : "border-transparent"
-        }`}
-      >
-        <div className="container mx-auto flex items-center justify-between px-4 py-3">
-          {/* Logo and Name */}
-          <div className="flex items-center gap-3">
-            <motion.div whileHover={{ scale: 1.02 }}>
-              <Image
-                src={logo}
-                alt="Logo Catarina Guimarães"
-                width={40}
-                height={40}
-                className="object-contain drop-shadow hover:rotate-12 transition-transform duration-300"
-                priority
-              />
-            </motion.div>
-            <a href="#">
-              <span
-                className={`${archivo.className} text-transparent bg-gradient-to-r from-text-primary to-text-secondary bg-clip-text text-xl sm:text-2xl font-bold`}
-              >
-                {userName} {/*Valor do estado do Redux */}
-              </span>
-            </a>
-          </div>
+    <header
+      className={`sticky top-0 z-50 border-b backdrop-blur-md transition-colors ${
+        scrolled || menuOpen
+          ? "border-border bg-background/85"
+          : "border-transparent bg-background/60"
+      }`}
+    >
+      <div className="page-width flex h-16 items-center justify-between">
+        <a href="#" className="flex items-center gap-2.5" aria-label={`${site.name}, ir ao topo`}>
+          <Image
+            src={logo}
+            alt=""
+            width={28}
+            height={28}
+            priority
+            className="size-7 object-contain dark:invert"
+          />
+          <span className="display text-xl">{site.name}</span>
+        </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {links.map((link) => (
-              <motion.a
-                key={link.href}
-                href={link.href}
-                className={`relative px-1 py-2 font-semibold text-md transition-colors ${
-                  activeSection === link.href
-                    ? "text-text-primary font-semibold"
-                    : "text-sidebar-ring hover:text-text-primary dark:text-ring dark:hover:text-text-primary"
-                }`}
-                whileHover={{ scale: 1.02 }}
-              >
-                {link.label}
-                {activeSection === link.href && (
-                  <motion.span
-                    layoutId="navUnderline"
-                    className="absolute left-0 bottom-0 w-full h-0.5 bg-text-primary dark:bg-text-primary"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-              </motion.a>
-            ))}
+        <div className="flex items-center gap-1 sm:gap-3">
+          <nav aria-label="Principal" className="hidden md:block">
+            <ul className="flex items-center gap-1">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    aria-current={active === link.href ? "location" : undefined}
+                    className={`rounded-full px-4 py-2 text-[0.95rem] font-medium transition-colors ${
+                      active === link.href
+                        ? "bg-secondary text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </nav>
 
-          {/* Right Side Controls */}
-          <div className="flex items-center gap-4">
-            <ThemeToggle />
+          <ThemeToggle />
 
-            {/* Mobile Menu Button */}
-            <Button
-              onClick={() => setMenuOpen(true)}
-              className="md:hidden p-2 rounded-md hover:bg-secondary dark:hover:bg-secondary transition"
-              aria-label="Abrir menu"
-              variant="outline"
-            >
-              <GiHamburgerMenu className="w-8 h-8" />
-            </Button>
-          </div>
+          <button
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-expanded={menuOpen}
+            aria-controls="menu-mobile"
+            aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+            className="inline-flex size-10 cursor-pointer items-center justify-center rounded-full hover:bg-secondary md:hidden"
+          >
+            {menuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
+          </button>
         </div>
-      </header>
+      </div>
 
-      {/* Mobile Sidebar */}
-      <MenuSidebar
-        open={menuOpen}
-        onClose={() => setMenuOpen(false)}
-        links={links}
-        activeSection={activeSection}
-      />
-    </>
+      {menuOpen && (
+        <nav
+          id="menu-mobile"
+          aria-label="Principal"
+          className="border-t border-border bg-background md:hidden"
+        >
+          <ul className="page-width py-4">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  aria-current={active === link.href ? "location" : undefined}
+                  className={`display block py-3 text-3xl ${
+                    active === link.href ? "text-primary" : ""
+                  }`}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+    </header>
   );
 }
