@@ -33,7 +33,6 @@ Aqui estão as principais tecnologias e ferramentas utilizadas:
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/) – Tipagem estática para maior segurança no código. </br></br>
 [![shadcn/ui](https://img.shields.io/badge/shadcn/ui-000000?style=for-the-badge&logo=radix-ui&logoColor=white)](https://ui.shadcn.com/)  </br></br>
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)  </br></br>
-[![Redux](https://img.shields.io/badge/redux-764abc?style=for-the-badge&logo=redux&logoColor=white)](https://redux.js.org/)  </br></br>
 
 ### **Integrações**
 [![GitHub API](https://img.shields.io/badge/GitHub_API-181717?style=for-the-badge&logo=github&logoColor=white)](https://docs.github.com/en/rest) – Consumo de dados para exibir meus repositórios automaticamente.
@@ -48,9 +47,28 @@ Aqui estão as principais tecnologias e ferramentas utilizadas:
 ## 📂 Estrutura do Portfólio  
 
 📌 O portfólio foi pensado para ser **simples, direto e interativo**:  
-- 🏠 **Página Inicial** — Apresentação e resumo sobre mim.  
-- 💼 **Projetos** — Listagem interativa com meus principais trabalhos.  
-- 📬 **Contato** — Links para minhas redes sociais e e-mail.  
+- 🏠 **Início** — Apresentação e resumo sobre mim.  
+- 👩‍💻 **Sobre e Habilidades** — Formação, foco técnico e tecnologias por categoria.  
+- 💼 **Projetos** — Três destaques e a lista dos demais repositórios do GitHub, buscada no servidor.  
+- 📬 **Contato** — E-mail, WhatsApp, LinkedIn, GitHub e currículo.  
+
+---
+
+## ⚙️ Como rodar
+
+```bash
+npm install
+npm run dev
+```
+
+Variáveis de ambiente (arquivo `.env.local`):
+
+| Variável | Para que serve |
+| --- | --- |
+| `WHATSAPP_NUMBER` | Número usado pelo botão de WhatsApp (ex.: `5596999999999`). Fica só no servidor. |
+| `GITHUB_TOKEN` | Opcional. Aumenta o limite da API do GitHub ao listar os repositórios. |
+
+Os textos, links e projetos em destaque ficam em `src/data/` (`site.ts`, `skills.ts`, `highlightProjects.ts`).
 
 ---
 

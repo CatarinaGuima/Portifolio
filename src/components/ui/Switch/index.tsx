@@ -2,30 +2,53 @@
 
 import * as React from "react"
 import * as SwitchPrimitive from "@radix-ui/react-switch"
-
+import { FiSun, FiMoon } from "react-icons/fi"
 import { cn } from "@/lib/utils"
 
-function Switch({
+function ThemeSwitch({
   className,
-  ...props
-}: React.ComponentProps<typeof SwitchPrimitive.Root>) {
+  isDark,
+  onCheckedChange,
+}: {
+  className?: string
+  isDark: boolean
+  onCheckedChange: () => void
+}) {
   return (
     <SwitchPrimitive.Root
-      data-slot="switch"
+      checked={isDark}
+      onCheckedChange={onCheckedChange}
       className={cn(
-        "peer data-[state=checked]:bg-primary data-[state=unchecked]:bg-input focus-visible:border-ring focus-visible:ring-ring/50 dark:data-[state=unchecked]:bg-input/80 inline-flex h-[1.15rem] w-8 shrink-0 items-center rounded-full border border-transparent shadow-xs transition-all outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+        "relative inline-flex h-[2rem] w-[4rem] items-center rounded-full transition-colors duration-300 cursor-pointer",
+        isDark ? "bg-color-theme" : "bg-color-theme",
         className
       )}
-      {...props}
     >
-      <SwitchPrimitive.Thumb
-        data-slot="switch-thumb"
+      {/* Ícone do Sol (sempre à esquerda) */}
+      <FiSun
         className={cn(
-          "bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground pointer-events-none block size-4 rounded-full ring-0 transition-transform data-[state=checked]:translate-x-[calc(100%-2px)] data-[state=unchecked]:translate-x-0"
+          "absolute left-1 w-[1.25rem] h-[1.25rem] transition-opacity",
+          isDark ? "opacity-0" : "opacity-100 text-chart-4"
+        )}
+      />
+
+      {/* Ícone da Lua (sempre à direita) */}
+      <FiMoon
+        className={cn(
+          "absolute right-1 w-[1.25rem] h-[1.25rem] transition-opacity",
+          isDark ? "opacity-100 text-chart-1" : "opacity-0"
+        )}
+      />
+
+      {/* Thumb (círculo que desliza) */}
+      <SwitchPrimitive.Thumb
+        className={cn(
+          "block h-6 w-6 rounded-full bg-background shadow-md transition-transform duration-300",
+          isDark ? "translate-x-1" : "translate-x-8"
         )}
       />
     </SwitchPrimitive.Root>
   )
 }
 
-export { Switch }
+export { ThemeSwitch }

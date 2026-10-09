@@ -1,38 +1,60 @@
-
-import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
-import "./globals.css";
+import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
+import "./globals.css";
 import Header from "@/components/ui/Header";
 import Footer from "@/components/ui/Footer";
-import { AppLoader } from "@/components/ui/Loading/loader";
-import ReduxProvider from "@/providers/ReduxProvider";
+import { site } from "@/data/site";
+
+// Fontes hospedadas no próprio projeto: sem requisição extra ao Google e sem
+// risco de o build falhar por rede.
+const heading = localFont({
+  src: "../fonts/BricolageGrotesque-latin-wdth.woff2",
+  variable: "--font-heading",
+  weight: "200 800",
+  display: "swap",
+  declarations: [{ prop: "font-stretch", value: "75% 100%" }],
+});
+
+const body = localFont({
+  src: "../fonts/Figtree-latin-wght.woff2",
+  variable: "--font-body",
+  weight: "300 900",
+  display: "swap",
+});
+
+const description =
+  "Portfólio de Catarina Guimarães, desenvolvedora front-end com React, Next.js e TypeScript. Veja projetos, habilidades e formas de contato.";
 
 export const metadata: Metadata = {
-  title: "Portfólio | Catarina Guimarães",
-  description: "Portfólio pessoal de Catarina Guimarães",
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} | ${site.role}`,
+    template: `%s | ${site.name}`,
+  },
+  description,
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Portfólio | Catarina Guimarães",
-    description: "Confira meus projetos e experiências",
-    url: "https://catarinaguimaraes.netlify.app/",
-    siteName: "Portfólio Catarina",
-    images: [
-      {
-        url: "https://catarinaguimaraes.netlify.app/avatar.png", 
-        width: 1200,
-        height: 630,
-        alt: "Catarina Guimarães",
-      },
-    ],
+    title: `${site.name} | ${site.role}`,
+    description,
+    url: "/",
+    siteName: `Portfólio ${site.firstName}`,
     locale: "pt_BR",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} | ${site.role}`,
+    description,
+  },
 };
 
-const nunito = Nunito({
-  weight: "400",
-  subsets: ["latin"],
-});
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f7f4ff" },
+    { media: "(prefers-color-scheme: dark)", color: "#130c26" },
+  ],
+};
 
 export default function RootLayout({
   children,
@@ -40,22 +62,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
-      <body
-        className={`${nunito.className} min-h-screen bg-cover bg-center bg-no-repeat scrollbar`}
-        style={{
-          backgroundImage: "url('/background-hero.svg')",
-        }}
-      >
-         <ReduxProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <AppLoader>
-              <Header />
-              {children}
-              <Footer />
-            </AppLoader>
-          </ThemeProvider>
-        </ReduxProvider>
+    <html
+      lang="pt-BR"
+      className={`${heading.variable} ${body.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="min-h-screen">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <a
+            href="#conteudo"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+          >
+            Pular para o conteúdo
+          </a>
+          <Header />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

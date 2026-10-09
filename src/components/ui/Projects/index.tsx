@@ -1,123 +1,116 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { useGithubProjects } from "@/app/api/github/projects";
-import { Loading } from "@/components/ui/Loading";
+import Image from "next/image";
+import { FiGithub } from "react-icons/fi";
+import { MdOutlineOpenInNew } from "react-icons/md";
 import highlightProjects from "@/data/highlightProjects";
-import HighlightsProjectsCard from "../HighlightsProjects";
-import AllProjecstCard from "@/components/ui/AllProjectsCard";
+import { site } from "@/data/site";
+import { getRepos } from "@/lib/github";
+import RepoList from "./RepoList";
 
-export default function Projects() {
-  const { projects, loading, error } = useGithubProjects("CatarinaGuima");
+export default async function Projects() {
+  const { repos, failed } = await getRepos(
+    site.githubUser,
+    highlightProjects.flatMap((project) =>
+      project.githubUrl ? [project.githubUrl] : [],
+    ),
+  );
 
   return (
-    <section
-      id="projetos"
-      className="relative py-16 sm:py-20 overflow-hidden bg-secondary-foreground/5 dark:bg-secondary-foreground/5"
-    >
-      <div className="container px-4 mx-auto">
-        {/* Content container */}
-        <div className="relative z-10">
-          {/* Section title */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col items-center mb-12"
-          >
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <span className="h-1 w-12 bg-gray-400 rounded-full" />
-              <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-text-primary to-text-secondary bg-clip-text text-center">
-                Meus Projetos
-              </h3>
-              <span className="h-1 w-12 bg-gray-400 rounded-full" />
-            </div>
-            <p className="text-gray-600 dark:text-gray-400 text-center max-w-2xl">
-              Confira meus projetos destacados e todos os repositórios do GitHub
-            </p>
-          </motion.div>
+    <section id="projetos" className="border-t border-border">
+      <div className="page-width py-20 md:py-28">
+        <div className="max-w-2xl">
+          <h2 className="display text-4xl sm:text-5xl">Projetos</h2>
+          <p className="mt-5 text-lg text-muted-foreground">
+            Os trabalhos que mais representam o que eu faço e, mais abaixo,
+            os outros repositórios do meu GitHub.
+          </p>
+        </div>
 
-          {/* Highlights Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-16"
-          >
-            <div className="flex flex-col items-start gap-2 mb-8 md:ml-[8rem]">
-              <h4 className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300">
-                Destaques
-              </h4>
-              <span className="h-1 w-16 bg-gradient-to-r from-text-primary to-text-secondary rounded-full" />
-            </div>
-
-            {loading ? (
-              <div className="flex justify-center py-12">
-                <Loading size={48} />
-              </div>
-            ) : error ? (
-              <div className="text-center py-12 text-red-500">
-                Erro ao carregar projetos: {error}
-              </div>
-            ) : (
-              <div className="flex flex-wrap gap-8 items-center justify-center">
-                {highlightProjects.map((project, index) => (
-                  <motion.div
-                    key={project.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={{ 
-                      scale: 1.05,
-                      transition: { duration: 0.2 }
-                    }}
-                    className="w-full max-w-sm"
-                  >
-                    <HighlightsProjectsCard
-                      imageUrl={project.imageUrl}
-                      title={project.title}
-                      description={project.description}
-                      technologies={project.technologies}
-                      demoUrl={project.demoUrl}
-                      githubUrl={project.githubUrl}
-                    />
-                  </motion.div>
-                ))}
-              </div>
-            )}
-          </motion.div>
-
-          {/* All Projects Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <div className="flex flex-col items-start gap-2 mb-8 md:ml-[8rem]">
-              <h4 className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300">
-                Todos os Projetos
-              </h4>
-              <span className="h-1 w-16 bg-gradient-to-r from-text-primary to-text-secondary rounded-full" />
-            </div>
-
-            {loading ? (
-              <div className="flex justify-center py-12">
-                <Loading size={48} />
-              </div>
-            ) : error ? (
-              <div className="text-center py-12 text-red-500">
-                Erro ao carregar projetos: {error}
-              </div>
-            ) : (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
+        <div className="mt-14">
+          {highlightProjects.map((project) => (
+            <article
+              key={project.title}
+              className="group grid items-center gap-8 border-t border-border py-12 md:grid-cols-12 md:gap-12"
+            >
+              <a
+                href={project.demoUrl ?? project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Abrir ${project.title}`}
+                className="relative block aspect-[2.15/1] overflow-hidden rounded-xl border border-border bg-card md:col-span-7"
               >
-                <AllProjecstCard projects={projects} />
-              </motion.div>
+                <Image
+                  src={project.imageUrl}
+                  alt={project.imageAlt}
+                  fill
+                  sizes="(min-width: 768px) 700px, 100vw"
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+              </a>
+
+              <div className="md:col-span-5">
+                <h3 className="display text-3xl sm:text-4xl">{project.title}</h3>
+                <p className="mt-4 text-lg text-muted-foreground">
+                  {project.description}
+                </p>
+                <p className="mt-5 font-medium">
+                  {project.technologies.join(", ")}
+                </p>
+
+                <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3 font-semibold">
+                  {project.demoUrl && (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-line inline-flex items-center gap-2 text-primary"
+                    >
+                      <MdOutlineOpenInNew aria-hidden="true" />
+                      Ver demo
+                    </a>
+                  )}
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-line inline-flex items-center gap-2"
+                    >
+                      <FiGithub aria-hidden="true" />
+                      Código no GitHub
+                    </a>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-8 border-t border-border pt-12">
+          <h3 className="display text-3xl sm:text-4xl">Outros repositórios</h3>
+
+          <div className="mt-8">
+            {failed ? (
+              <p className="text-muted-foreground">
+                Não foi possível carregar os repositórios agora. Veja todos
+                direto no{" "}
+                <a
+                  href={site.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-line font-semibold text-foreground"
+                >
+                  meu GitHub
+                </a>
+                .
+              </p>
+            ) : repos.length === 0 ? (
+              <p className="text-muted-foreground">
+                Não há outros repositórios públicos além dos destacados acima.
+              </p>
+            ) : (
+              <RepoList repos={repos} />
             )}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
