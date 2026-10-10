@@ -1,121 +1,82 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import Image from "next/image";
+import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import logo from "@/assets/images/logo.png";
 import lineBar from "@/assets/images/lineBar.png";
-import { Archivo_Black } from "next/font/google";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../redux/store";
+import { site } from "@/data/site";
 
-const archivo = Archivo_Black({
-  weight: "400",
-  subsets: ["latin"],
-  preload: true,
-});
+const socialLinks = [
+  { icon: <FiGithub size={20} aria-hidden="true" />, href: site.github, label: "GitHub", rel: "me noopener noreferrer" },
+  { icon: <FiLinkedin size={20} aria-hidden="true" />, href: site.linkedin, label: "LinkedIn", rel: "me noopener noreferrer" },
+  { icon: <FiMail size={20} aria-hidden="true" />, href: `mailto:${site.email}`, label: "E-mail", rel: undefined },
+];
 
 export default function Footer() {
-
-  const userName = useSelector((state: RootState) => state.user.value);
-  const currentYear = new Date().getFullYear();
-
-  const socialLinks = [
-    {
-      icon: <FiGithub size={20} />,
-      href: "https://github.com/catarinaguima",
-      label: "GitHub",
-      rel: "me",
-    },
-    {
-      icon: <FiLinkedin size={20} />,
-      href: "https://www.linkedin.com/in/catarinaguimaraess/",
-      label: "LinkedIn",
-      rel: "me",
-    },
-    {
-      icon: <FiMail size={20} />,
-      href: "mailto:catarina.guimaraes15@gmail.com",
-      label: "Email",
-    },
-  ];
-
   return (
-    <footer id="contato" className="border-t shadow-lg" aria-labelledby="footer-heading">
-      {/* heading semântico invisível para acessibilidade */}
-      <h2 id="footer-heading" className="sr-only">Rodapé</h2>
+    <footer
+      id="contato"
+      aria-labelledby="footer-heading"
+      className="mt-8 border-t border-border bg-card/40 backdrop-blur"
+    >
+      <h2 id="footer-heading" className="sr-only">
+        Rodapé e contato
+      </h2>
 
-      {/* Linha decorativa */}
-      <div>
-        <Image
-          src={lineBar}
-          alt="Linha decorativa"
-          className="object-contain drop-shadow transition-transform duration-300 hover:scale-110 w-full"
-          priority
-        />
-      </div>
+      {/* Linha colorida decorativa */}
+      <Image src={lineBar} alt="" aria-hidden="true" className="h-1.5 w-full object-cover" />
 
-      <div className="container mx-auto px-4 py-6">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 max-w-5xl mx-auto">
-          
-          {/* Branding */}
-          <motion.div>
-            <div className="flex items-center justify-center gap-2">
+      <div className="page-width py-10">
+        <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          {/* Marca */}
+          <div>
+            <div className="flex items-center gap-2.5">
               <Image
                 src={logo}
-                alt="Logo Catarina Guimarães"
-                width={20}
-                height={20}
-                className="object-contain drop-shadow transition-transform duration-300 hover:scale-110"
-                priority
+                alt=""
+                width={28}
+                height={28}
+                className="size-7 object-contain dark:invert"
               />
-              <span
-                className={`${archivo.className} text-transparent bg-gradient-to-r from-text-primary to-text-secondary bg-clip-text text-lg font-bold`}
-              >
-                {userName}
-              </span>
+              <span className="display text-gradient text-2xl">{site.name}</span>
             </div>
-            <p className="flex items-center justify-center text-text-subtitle font-semibold text-sm">
-              Desenvolvedora Front-end
-            </p>
-          </motion.div>
+            <p className="mt-1 font-semibold text-text-subtitle">{site.role}</p>
+          </div>
 
-          {/* Social Links */}
-          <motion.div
-            className="flex flex-col items-center justify-center space-y-4"
-          >
-            <p className="text-muted-foreground dark:text-muted-foregroud/30 font-medium">
-              Entre em contato comigo!
-            </p>
-            <div className="flex items-center justify-center gap-4">
+          {/* Contato */}
+          <div className="md:text-right">
+            <p className="font-medium text-text-paragraph">Entre em contato comigo!</p>
+            <a
+              href={`mailto:${site.email}`}
+              className="link-line mt-1 inline-block break-all font-semibold text-text-primary"
+            >
+              {site.email}
+            </a>
+            <ul className="mt-4 flex items-center gap-3 md:justify-end">
               {socialLinks.map((link) => (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  aria-label={link.label}
-                  title={link.label}
-                  rel={link.rel || "noopener noreferrer"}
-                  className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 
-                             hover:bg-text-primary dark:hover:bg-text-primary/80 hover:text-muted transition-all duration-300"
-                  target="_blank"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                 
-                >
-                  {link.icon}
-                </motion.a>
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    aria-label={link.label}
+                    title={link.label}
+                    target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                    rel={link.rel}
+                    className="flex size-11 items-center justify-center rounded-full border border-border bg-background/60 transition-all hover:-translate-y-0.5 hover:border-text-primary hover:text-text-primary"
+                  >
+                    {link.icon}
+                  </a>
+                </li>
               ))}
-            </div>
-          </motion.div>
+            </ul>
+          </div>
         </div>
 
-        {/* Copyright */}
-        <motion.p
-          className="text-gray-500 dark:text-gray-400 text-center mt-8"
-        
-        >
-          © {currentYear} Catarina Guimarães. Todos os direitos reservados.
-        </motion.p>
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-6 text-sm text-text-subtitle">
+          <p>
+            © {new Date().getFullYear()} {site.name}. Todos os direitos reservados.
+          </p>
+          <a href="#" className="link-line">
+            Voltar ao topo
+          </a>
+        </div>
       </div>
     </footer>
   );

@@ -1,44 +1,44 @@
-/* Tailwind v4 core */
-@tailwind utilities;
 @import "tailwindcss";
 @import "tw-animate-css";
 
 /* Variante dark (Tailwind v4) */
 @custom-variant dark (&:is(.dark *));
 
-/* =======================
+/* =========================================================
    Design tokens - modo claro
-   ======================= */
+   Mesma identidade de antes (violeta #8f00ff e azul #a6d3ff),
+   com fundo e bordas ajustados para os cartões se destacarem
+   e textos com contraste de leitura confortável.
+   ========================================================= */
 :root {
-  --radius: 0.625rem;
+  --radius: 0.75rem;
 
-  /* Paleta base (modo claro) */
-  --background: #e9e9e9;
+  --background: #f1f1f5;
   --foreground: #09090b;
 
-  --card: #f0f0f0;
+  --card: #ffffff;
   --card-foreground: #09090b;
 
-  --popover: #e9e9e9;
+  --popover: #ffffff;
   --popover-foreground: #09090b;
 
   --primary: #09090b;
   --primary-foreground: #fafafa;
 
-  --secondary: #f4f4f5;
+  --secondary: #e8e8ef;
   --secondary-foreground: #09090b;
 
-  --muted: #f4f4f5;
-  --muted-foreground: #71717b;
+  --muted: #e8e8ef;
+  --muted-foreground: #5f5f6b;
 
-  --accent: #f4f4f5;
+  --accent: #e8e8ef;
   --accent-foreground: #09090b;
 
   --destructive: #e7000b;
 
-  --border: #e4e4e7;
-  --input: #d8ddde;
-  --ring: #9f9fa9;
+  --border: #d9d9e2;
+  --input: #d9d9e2;
+  --ring: #8f00ff;
 
   /* Texto */
   --text-primary: #8f00ff;
@@ -46,10 +46,14 @@
   --text-subtitle: #4f5d75;
   --text-paragraph: #2d3142;
 
-  /* Charts */
+  /* Gradiente da marca (títulos, nome, detalhes) */
+  --grad-a: #8f00ff;
+  --grad-b: #1f6feb;
+
+  /* Charts (o verde do botão de WhatsApp usa chart-2 e chart-3) */
   --chart-1: #f54900;
-  --chart-2: #009689;
-  --chart-3: #104e64;
+  --chart-2: #007a6c;
+  --chart-3: #00574d;
   --chart-4: #ffb900;
   --chart-5: #ad46ff;
 
@@ -66,9 +70,9 @@
   --color-theme: #d5d5d5;
 }
 
-/* =======================
+/* =========================================================
    Tema dark
-   ======================= */
+   ========================================================= */
 .dark {
   --background: #09090b;
   --foreground: #fafafa;
@@ -86,16 +90,16 @@
   --secondary-foreground: #fafafa;
 
   --muted: #27272a;
-  --muted-foreground: #9f9fa9;
+  --muted-foreground: #a1a1aa;
 
   --accent: #27272a;
   --accent-foreground: #fafafa;
 
   --destructive: #ff6467;
 
-  --border: #2d2d2d;
+  --border: #2d2d33;
   --input: #3a3a3a;
-  --ring: #71717b;
+  --ring: #a6d3ff;
 
   /* Texto (modo escuro) */
   --text-primary: #a6d3ff;
@@ -103,14 +107,15 @@
   --text-subtitle: #cbd5e1;
   --text-paragraph: #e2e8f0;
 
-  /* Charts */
+  --grad-a: #a6d3ff;
+  --grad-b: #b57bff;
+
   --chart-1: #1f5ba3;
   --chart-2: #00bc7d;
-  --chart-3: #104e64;
+  --chart-3: #00a36c;
   --chart-4: #ad46ff;
   --chart-5: #ff2056;
 
-  /* Sidebar */
   --sidebar: #09090b;
   --sidebar-foreground: #fafafa;
   --sidebar-primary: #1447e6;
@@ -120,17 +125,21 @@
   --sidebar-border: #2d2d2d;
   --sidebar-ring: #71717b;
 
-  --color-theme: #DEDEDE;
+  --color-theme: #dedede;
 }
 
-/* =======================
+/* =========================================================
    Mapeamento para Tailwind
-   ======================= */
+   ========================================================= */
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), var(--font-body), ui-sans-serif,
+    system-ui, sans-serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -179,55 +188,153 @@
   --color-text-subtitle: var(--text-subtitle);
   --color-text-paragraph: var(--text-paragraph);
 
+  --color-grad-a: var(--grad-a);
+  --color-grad-b: var(--grad-b);
+
   --color-color-theme: var(--color-theme);
 }
 
-/* =======================
+/* =========================================================
    Base
-   ======================= */
+   ========================================================= */
 * {
   box-sizing: border-box;
 }
-html,
-body {
-  scroll-behavior: smooth;
-  @apply text-black dark:bg-black dark:text-white transition-colors;
-}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-text-size-adjust: 100%;
+  /* Barra de rolagem na cor da marca */
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-primary) transparent;
+}
+
+body {
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* O brilho rosa, violeta e azul de fundo fica fixo enquanto a página rola */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url("/background-hero.svg") center / cover no-repeat;
+}
+
+::selection {
+  background: #a6d3ff;
+  color: #09090b;
+}
+
+:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Âncoras não ficam escondidas atrás do header fixo */
+section[id],
+footer[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
-/* =======================
-   Utilitários extras
-   ======================= */
-@layer utilities {
-  .scrollbar::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+/* =========================================================
+   Utilitários do projeto
+   ========================================================= */
+@utility page-width {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (min-width: 40rem) {
+    padding-inline: 2rem;
   }
-  .scrollbar::-webkit-scrollbar-track {
-    border-radius: 100vh;
-    background: #f1f1f1;
-  }
-  .scrollbar::-webkit-scrollbar-thumb {
-    background: #8f00ff;
-    border-radius: 100vh;
-    border: 2px solid #f1f1f1;
-  }
-  .scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #6a00b8;
-  }
+}
 
-  .dark .scrollbar::-webkit-scrollbar-thumb {
-    background: #a6d3ff;
-    border-color: #1e1e1e;
+/* Fonte dos títulos: Bricolage Grotesque em largura reduzida */
+@utility display {
+  font-family: var(--font-heading), var(--font-body), ui-sans-serif, system-ui,
+    sans-serif;
+  font-stretch: 85%;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+/* Texto com o gradiente violeta e azul da marca.
+   O padding evita cortar a base das letras (g, j, p). */
+@utility text-gradient {
+  background-image: linear-gradient(100deg, var(--grad-a), var(--grad-b));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-bottom: 0.1em;
+}
+
+/* Cartão de vidro: fundo translúcido com desfoque */
+@utility glass {
+  background-color: color-mix(in srgb, var(--card) 70%, transparent);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+}
+
+/* O único movimento da página ao carregar: o nome engrossa em onda */
+@keyframes weight-wave {
+  0% {
+    font-weight: 250;
   }
-  .dark .scrollbar::-webkit-scrollbar-track {
-    background: #1e1e1e;
+  45% {
+    font-weight: 800;
   }
+  100% {
+    font-weight: 700;
+  }
+}
+
+.hero-letter {
+  display: inline-block;
+  font-weight: 700;
+  animation: weight-wave 1.5s cubic-bezier(0.3, 0.7, 0.2, 1) both;
+  animation-delay: calc(var(--i) * 55ms + 120ms);
+}
+
+/* Link com sublinhado discreto */
+.link-line {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  transition: text-decoration-color 0.2s, color 0.2s;
+}
+.link-line:hover {
+  text-decoration-color: currentColor;
+  color: var(--text-primary);
 }

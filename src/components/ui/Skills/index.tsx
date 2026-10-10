@@ -1,8 +1,6 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
-import { Badge } from "../Badge";
+import Section from "../Section";
+import Reveal from "../Reveal";
 
 // Ícones locais
 import iconTrello from "@/assets/images/trello.png";
@@ -74,99 +72,63 @@ const skillCategories: SkillCategory[] = [
   },
 ];
 
-export default function Skills() {
-  const renderIcon = (skill: SkillProps) => {
-    const isTrello = skill.icon === "trello";
-
-    return (
-      <Image
-        src={
-          isTrello ? iconTrello : `https://skillicons.dev/icons?i=${skill.icon}`
-        }
-        alt={skill.title}
-        width={20}
-        height={20}
-        className="object-contain"
-        unoptimized={!isTrello}
-      />
-    );
-  };
-
+function SkillIcon({ skill }: { skill: SkillProps }) {
+  const isLocal = skill.icon === "trello";
   return (
-    <section
+    <Image
+      src={isLocal ? iconTrello : `https://skillicons.dev/icons?i=${skill.icon}`}
+      alt=""
+      width={20}
+      height={20}
+      className="size-5 object-contain"
+      unoptimized={!isLocal}
+    />
+  );
+}
+
+export default function Skills() {
+  return (
+    <Section
       id="skills"
-      className="flex flex-col items-center justify-center py-20 sm:py-20 relative overflow-hidden"
+      title="Habilidades"
+      intro="Tecnologias e ferramentas que uso no dia a dia."
     >
-      {/* Header */}
-      <div className="container mx-auto px-4 text-center relative flex flex-col justify-center items-center mt-4">
-        <motion.h2
-          className="text-[4rem] md:text-[5rem] font-extrabold uppercase text-accent-foreground opacity-10 select-none pointer-events-none absolute leading-none "
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.1 }}
-          transition={{ duration: 0.8 }}
-        >
-          Minhas Skills
-        </motion.h2>
-
-        <motion.h3
-          className="relative z-10 text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-text-primary to-text-secondary bg-clip-text flex items-center justify-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          Habilidades
-        </motion.h3>
-      </div>
-
-      {/* Skills */}
-      <div className="flex flex-wrap justify-center gap-6 max-w-6xl w-full px-4">
-        {skillCategories.map((category) => (
-          <motion.div
+      <div className="grid gap-x-5 gap-y-14 pt-8 sm:grid-cols-2">
+        {skillCategories.map((category, index) => (
+          <Reveal
             key={category.name}
-            layout
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="bg-card/50 dark:bg-background/20 backdrop-blur-lg rounded-xl p-4 shadow-lg border border-muted-foreground/30 dark:border-muted-foreground/30 hover:shadow-xl transition-all w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] mt-16"
+            delay={(index % 2) * 0.08}
+            className="glass relative rounded-2xl px-5 pb-6 pt-10 shadow-lg transition-colors hover:border-text-primary/40 sm:[&:last-child:nth-child(odd)]:col-span-2"
           >
-            {/* Category header */}
-            <div className="flex flex-col items-center mb-4">
-              <div className="bg-accent dark:bg-accent p-2 rounded-full shadow-md border border-muted-foreground/30 dark:border-muted-foreground/30 -mt-10 ">
-                <Image
-                  src={category.image}
-                  alt={category.name}
-                  width={40}
-                  height={40}
-                  className="object-contain"
-                />
-              </div>
-              <h4 className="text-xl font-bold text-primary mt-2">
-                {category.name}
-              </h4>
+            {/* Ícone da categoria flutuando sobre o cartão */}
+            <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full border border-border bg-card p-2 shadow-md">
+              <Image
+                src={category.image}
+                alt=""
+                width={40}
+                height={40}
+                className="object-contain"
+              />
             </div>
 
-            {/* Skills list */}
-            <div className="flex flex-wrap justify-center gap-3">
+            <h3 className="text-center font-display text-xl font-bold">
+              {category.name}
+            </h3>
+
+            <ul className="mt-4 flex flex-wrap justify-center gap-2">
               {category.skills.map((skill) => (
-                <div
+                <li
                   key={skill.id}
-                  className="flex items-center gap-2 bg-accent/20 dark:bg-accent/30 rounded-lg px-3 py-2 hover:bg-accent/30 dark:hover:bg-accent/40 transition-colors min-w-[8rem]"
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-background/50 px-3 py-1.5 text-sm font-medium transition-colors hover:border-text-primary/60 hover:bg-text-primary/10"
                 >
-                  <div className=" flex items-center justify-center">
-                    {renderIcon(skill)}
-                  </div>
-                  <Badge
-                    variant="secondary"
-                    className="text-xs font-medium whitespace-nowrap overflow-hidden text-ellipsis flex-1 text-center"
-                  >
-                    {skill.title}
-                  </Badge>
-                </div>
+                  <SkillIcon skill={skill} />
+                  {skill.title}
+                </li>
               ))}
-            </div>
-          </motion.div>
+            </ul>
+          </Reveal>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

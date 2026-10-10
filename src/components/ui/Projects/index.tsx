@@ -1,125 +1,100 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { useGithubProjects } from "@/app/api/github/projects";
-import { Loading } from "@/components/ui/Loading";
 import highlightProjects from "@/data/highlightProjects";
+import { site } from "@/data/site";
+import { getProjects } from "@/lib/github";
+import Section from "../Section";
+import Reveal from "../Reveal";
 import HighlightsProjectsCard from "../HighlightsProjects";
-import AllProjecstCard from "@/components/ui/AllProjectsCard";
+import AllProjectsCarousel from "../AllProjectsCard";
 
-export default function Projects() {
-  const { projects, loading, error } = useGithubProjects("CatarinaGuima");
+function SubTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mb-8">
+      <h3 className="font-display text-2xl font-semibold sm:text-3xl">{children}</h3>
+      <span
+        aria-hidden="true"
+        className="mt-2 block h-1 w-16 rounded-full bg-gradient-to-r from-grad-a to-grad-b"
+      />
+    </div>
+  );
+}
+
+export default async function Projects() {
+  // Busca no servidor, uma vez por hora. Os destaques não se repetem no carrossel.
+  const { projects, failed } = await getProjects(
+    site.githubUser,
+    highlightProjects.flatMap((project) =>
+      project.githubUrl ? [project.githubUrl] : [],
+    ),
+  );
 
   return (
-    <section
+    <Section
       id="projetos"
-      className="relative py-16 sm:py-20 overflow-hidden bg-secondary-foreground/5 dark:bg-secondary-foreground/5"
+      title="Projetos"
+      intro={
+        <>
+          Os trabalhos em destaque e os demais repositórios do meu{" "}
+          <a
+            href={site.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-line font-semibold text-text-primary"
+          >
+            GitHub
+          </a>
+          .
+        </>
+      }
     >
-      <div className="container px-4 mx-auto">
-        {/* Content container */}
-        <div className="relative z-10">
-          {/* Section title */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col items-center mb-12"
-          >
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <span className="h-1 w-12 bg-gray-400 rounded-full" />
-              <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-text-primary to-text-secondary bg-clip-text text-center">
-                Meus Projetos
-              </h3>
-              <span className="h-1 w-12 bg-gray-400 rounded-full" />
-            </div>
-            <p className="text-gray-600 dark:text-gray-400 text-center max-w-2xl">
-              Confira meus projetos destacados e todos os repositórios do GitHub
-            </p>
-          </motion.div>
-
-          {/* Highlights Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-16"
-          >
-            <div className="flex flex-col items-start gap-2 mb-8 md:ml-[8rem]">
-              <h4 className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300">
-                Destaques
-              </h4>
-              <span className="h-1 w-16 bg-gradient-to-r from-text-primary to-text-secondary rounded-full" />
-            </div>
-
-            {loading ? (
-              <div className="flex justify-center py-12">
-                <Loading size={48} />
-              </div>
-            ) : error ? (
-              <div className="text-center py-12 text-red-500">
-                Erro ao carregar projetos: {error}
-              </div>
-            ) : (
-              <div className="flex flex-wrap gap-8 items-center justify-center">
-                {highlightProjects.map((project, index) => (
-                  <motion.div
-                    key={project.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={{ 
-                      scale: 1.05,
-                      transition: { duration: 0.2 }
-                    }}
-                    className="w-full max-w-sm"
-                  >
-                    <HighlightsProjectsCard
-                      imageUrl={project.imageUrl}
-                      title={project.title}
-                      description={project.description}
-                      technologies={project.technologies}
-                      demoUrl={project.demoUrl}
-                      githubUrl={project.githubUrl}
-                    />
-                  </motion.div>
-                ))}
-              </div>
-            )}
-          </motion.div>
-
-          {/* All Projects Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <div className="flex flex-col items-start gap-2 mb-8 md:ml-[8rem]">
-              <h4 className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300">
-                Todos os Projetos
-              </h4>
-              <span className="h-1 w-16 bg-gradient-to-r from-text-primary to-text-secondary rounded-full" />
-            </div>
-
-            {loading ? (
-              <div className="flex justify-center py-12">
-                <Loading size={48} />
-              </div>
-            ) : error ? (
-              <div className="text-center py-12 text-red-500">
-                Erro ao carregar projetos: {error}
-              </div>
-            ) : (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
+      <div className="space-y-20">
+        <div>
+          <SubTitle>Destaques</SubTitle>
+          <div className="grid gap-6 sm:grid-cols-2">
+            {highlightProjects.map((project, index) => (
+              <Reveal
+                key={project.title}
+                delay={index === 0 ? 0 : (index - 1) * 0.08}
+                className={index === 0 ? "sm:col-span-2" : undefined}
               >
-                <AllProjecstCard projects={projects} />
-              </motion.div>
-            )}
-          </motion.div>
+                <HighlightsProjectsCard
+                  featured={index === 0}
+                  imageUrl={project.imageUrl}
+                  title={project.title}
+                  description={project.description}
+                  technologies={project.technologies}
+                  demoUrl={project.demoUrl}
+                  githubUrl={project.githubUrl}
+                />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <SubTitle>Todos os Projetos</SubTitle>
+          {failed ? (
+            <p className="text-text-paragraph">
+              Não foi possível carregar os repositórios agora. Veja todos direto
+              no{" "}
+              <a
+                href={site.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-line font-semibold text-text-primary"
+              >
+                meu GitHub
+              </a>
+              .
+            </p>
+          ) : projects.length === 0 ? (
+            <p className="text-text-paragraph">
+              Não há outros repositórios públicos além dos destacados acima.
+            </p>
+          ) : (
+            <AllProjectsCarousel projects={projects} />
+          )}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
