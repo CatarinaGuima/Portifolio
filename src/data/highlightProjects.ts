@@ -30,17 +30,6 @@ const highlightProjects: HighlightProject[] = [
     imageUrl: "/sgm.png",
     imageAlt: "Tela de login do sistema Meta Service SGM",
   },
-  {
-    title: "Idesserts",
-    description:
-      "Carrinho de compras totalmente funcional em TypeScript: gerencia produtos, calcula o total e controla a quantidade de cada item.",
-    technologies: ["TypeScript", "SCSS", "HTML", "JavaScript", "Vite"],
-    demoUrl: "https://idesserts.netlify.app/",
-    githubUrl:
-      "https://github.com/CatarinaGuima/SOFTEX-FAP-Projeto-Product-List-with-Cart",
-    imageUrl: "/idesserts.png",
-    imageAlt: "Lista de sobremesas e carrinho de compras do Idesserts",
-  },
 ];
 
 export default highlightProjects;

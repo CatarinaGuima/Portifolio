@@ -12,7 +12,7 @@ function SubTitle({ children }: { children: React.ReactNode }) {
       <h3 className="font-display text-2xl font-semibold sm:text-3xl">{children}</h3>
       <span
         aria-hidden="true"
-        className="mt-2 block h-1 w-16 rounded-full bg-gradient-to-r from-grad-a to-grad-b"
+        className="mt-2 block h-1 w-16 rounded-full bg-linear-to-r from-grad-a to-grad-b"
       />
     </div>
   );
@@ -30,7 +30,8 @@ export default async function Projects() {
   return (
     <Section
       id="projetos"
-      title="Projetos"
+      title="Overview"
+      subtitle="Projetos"
       intro={
         <>
           Os trabalhos em destaque e os demais repositórios do meu{" "}
@@ -53,11 +54,11 @@ export default async function Projects() {
             {highlightProjects.map((project, index) => (
               <Reveal
                 key={project.title}
-                delay={index === 0 ? 0 : (index - 1) * 0.08}
-                className={index === 0 ? "sm:col-span-2" : undefined}
+                delay={index * 0.08}
+                className="sm:col-span-2"
               >
                 <HighlightsProjectsCard
-                  featured={index === 0}
+                  featured={false}
                   imageUrl={project.imageUrl}
                   title={project.title}
                   description={project.description}

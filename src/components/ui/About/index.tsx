@@ -15,10 +15,10 @@ function Highlight({ children }: { children: React.ReactNode }) {
 
 export default function About() {
   return (
-    <Section id="sobre" title="Sobre mim" intro="Um pouco mais sobre mim.">
+    <Section id="sobre" title="About me" subtitle="Sobre mim" intro="Um pouco mais sobre mim.">
       <Reveal>
-        <div className="max-w-160 space-y-6 text-lg leading-relaxed text-text-paragraph sm:text-xl sm:leading-relaxed">
-          <p>
+        <div className="max-w-190 space-y-6 text-justify text-lg leading-relaxed text-text-paragraph sm:text-xl sm:leading-relaxed">
+          <p className="indent-8">
             Com dupla formação em Administração e Análise e Desenvolvimento de
             Sistemas, tenho vivência prática em projetos Web e mobile,
             explorando tecnologias como <Highlight>React</Highlight>,{" "}
@@ -26,7 +26,7 @@ export default function About() {
             <Highlight>TypeScript</Highlight> para transformar ideias em
             soluções funcionais e visualmente atraentes.
           </p>
-          <p>
+          <p className="indent-8">
             Dentre os meus projetos mais relevantes, destaco o{" "}
             <Highlight>PRO Lidera Skills</Highlight> e o{" "}
             <Highlight>
@@ -50,7 +50,7 @@ export default function About() {
                 href={link.href}
                 target={link.href.startsWith("mailto:") ? undefined : "_blank"}
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-4 py-2.5 font-semibold transition-colors hover:border-text-primary hover:text-text-primary"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-4 py-2.5 font-semibold transition-colors hover:border-text-primary hover:text-text-secondary"
               >
                 {link.icon}
                 {link.label}

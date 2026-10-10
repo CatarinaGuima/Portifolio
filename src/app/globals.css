@@ -1,14 +1,14 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 /* Variante dark (Tailwind v4) */
 @custom-variant dark (&:is(.dark *));
 
 /* =========================================================
-   Design tokens - modo claro
-   Mesma identidade de antes (violeta #8f00ff e azul #a6d3ff),
-   com fundo e bordas ajustados para os cartões se destacarem
-   e textos com contraste de leitura confortável.
+  Design tokens - modo claro
+  Mesma identidade de antes (violeta #8f00ff e azul #a6d3ff),
+  com fundo e bordas ajustados para os cartões se destacarem
+  e textos com contraste de leitura confortável.
    ========================================================= */
 :root {
   --radius: 0.75rem;
@@ -71,7 +71,7 @@
 }
 
 /* =========================================================
-   Tema dark
+  Tema dark
    ========================================================= */
 .dark {
   --background: #09090b;
@@ -129,7 +129,7 @@
 }
 
 /* =========================================================
-   Mapeamento para Tailwind
+  Mapeamento para Tailwind
    ========================================================= */
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -138,8 +138,8 @@
   --radius-xl: calc(var(--radius) + 4px);
 
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-heading), var(--font-body), ui-sans-serif,
-    system-ui, sans-serif;
+  --font-display:
+  var(--font-heading), var(--font-body), ui-sans-serif, system-ui, sans-serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -195,7 +195,7 @@
 }
 
 /* =========================================================
-   Base
+  Base
    ========================================================= */
 * {
   box-sizing: border-box;
@@ -227,12 +227,12 @@ body {
 
 /* O brilho rosa, violeta e azul de fundo fica fixo enquanto a página rola */
 body::before {
-  content: "";
+  content: '';
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: url("/background-hero.svg") center / cover no-repeat;
+  background: url('/background-hero.svg') center / cover no-repeat;
 }
 
 ::selection {
@@ -256,6 +256,7 @@ footer[id] {
   html {
     scroll-behavior: auto;
   }
+
   *,
   *::before,
   *::after {
@@ -266,13 +267,14 @@ footer[id] {
 }
 
 /* =========================================================
-   Utilitários do projeto
+  Utilitários do projeto
    ========================================================= */
 @utility page-width {
   width: 100%;
   max-width: 72rem;
   margin-inline: auto;
   padding-inline: 1.25rem;
+
   @media (min-width: 40rem) {
     padding-inline: 2rem;
   }
@@ -280,8 +282,8 @@ footer[id] {
 
 /* Fonte dos títulos: Bricolage Grotesque em largura reduzida */
 @utility display {
-  font-family: var(--font-heading), var(--font-body), ui-sans-serif, system-ui,
-    sans-serif;
+  font-family:
+    var(--font-heading), var(--font-body), ui-sans-serif, system-ui, sans-serif;
   font-stretch: 85%;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -311,9 +313,11 @@ footer[id] {
   0% {
     font-weight: 250;
   }
+
   45% {
     font-weight: 800;
   }
+
   100% {
     font-weight: 700;
   }
@@ -332,8 +336,11 @@ footer[id] {
   text-decoration-thickness: 1px;
   text-underline-offset: 0.25em;
   text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
-  transition: text-decoration-color 0.2s, color 0.2s;
+  transition:
+    text-decoration-color 0.2s,
+    color 0.2s;
 }
+
 .link-line:hover {
   text-decoration-color: currentColor;
   color: var(--text-primary);

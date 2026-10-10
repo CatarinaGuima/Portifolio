@@ -32,7 +32,7 @@ export default function RepoList({ repos }: { repos: Project[] }) {
                 </a>
               </h4>
               {repo.description && (
-                <p className="mt-1 max-w-[40rem] text-muted-foreground">
+                <p className="mt-1 max-w-160 text-muted-foreground">
                   {repo.description}
                 </p>
               )}

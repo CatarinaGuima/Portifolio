@@ -90,7 +90,8 @@ export default function Skills() {
   return (
     <Section
       id="skills"
-      title="Habilidades"
+      title="My Skills"
+      subtitle="Habilidades"
       intro="Tecnologias e ferramentas que uso no dia a dia."
     >
       <div className="grid gap-x-5 gap-y-14 pt-8 sm:grid-cols-2">

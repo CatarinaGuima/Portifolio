@@ -74,7 +74,7 @@ export default function AllProjectsCarousel({
                 ) : (
                   <div
                     aria-hidden="true"
-                    className="flex h-24 items-center bg-gradient-to-br from-grad-a/25 via-transparent to-grad-b/25 px-5"
+                    className="flex h-24 items-center bg-linear-to-br from-grad-a/25 via-transparent to-grad-b/25 px-5"
                   >
                     <FiFolder className="size-8 text-text-primary" />
                   </div>

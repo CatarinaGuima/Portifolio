@@ -2,7 +2,7 @@ export const site = {
   name: "Catarina Guimarães",
   firstName: "Catarina",
   lastName: "Guimarães",
-  role: "Desenvolvedora Front-end",
+  role: "Desenvolvedora Full-stack",
   url: "https://catarinaguimaraes.netlify.app",
   email: "catarina.guimaraes15@gmail.com",
   githubUser: "CatarinaGuima",

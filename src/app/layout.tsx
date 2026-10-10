@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
+// @ts-expect-error - CSS imports are handled by Next.js
 import "./globals.css";
 import Header from "@/components/ui/Header";
 import Footer from "@/components/ui/Footer";
@@ -24,7 +25,7 @@ const body = localFont({
 });
 
 const description =
-  "Portfólio de Catarina Guimarães, desenvolvedora front-end com React, Next.js e TypeScript. Veja projetos, habilidades e formas de contato.";
+  "Portfólio de Catarina Guimarães, desenvolvedora full-stack com React, Next.js e TypeScript. Veja projetos, habilidades e formas de contato.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

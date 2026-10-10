@@ -48,12 +48,8 @@ export default function Hero() {
             {site.role}
           </p>
 
-          <p className="mx-auto mt-4 max-w-136 text-lg leading-relaxed text-text-paragraph md:mx-0">
-            Especialista em criar experiências digitais performáticas e
-            acessíveis com <strong className="font-bold">React</strong>,{" "}
-            <strong className="font-bold">Next.js</strong> e{" "}
-            <strong className="font-bold">TypeScript</strong>. Combinando design
-            intuitivo com código eficiente para resultados excepcionais.
+          <p className=" text-justify mx-auto mt-4 max-w-136 text-lg leading-relaxed text-text-paragraph md:mx-0">
+            Crio soluções digitais que unem interfaces intuitivas, código bem estruturado e eficiência. Busco transformar necessidades reais em aplicações acessíveis, funcionais e com foco na experiência do usuário.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
@@ -78,7 +74,7 @@ export default function Hero() {
               )}
             >
               <FiDownload aria-hidden="true" />
-              Download CV
+              Baixar Currículo
             </a>
           </div>
         </div>
