@@ -1,88 +1,184 @@
-# 👩‍💻 Catarina Guimarães - Portfólio de Desenvolvedora
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9d325b05-97c1-4e76-bec3-e86f9911b0cd/deploy-status)](https://app.netlify.com/projects/catarinaguimaraes/deploys)
-</br>
-</br>
-Bem-vindo(a) ao meu portfólio pessoal! 🚀  
-Aqui você encontrará meus principais projetos, minhas habilidades técnicas e um pouco sobre minha trajetória na área de tecnologia.
-
----
-## 📸 Preview  
-
-✨ *Uma prévia do design responsivo e moderno do portfólio.*  
 <div align="center">
----<img width="1080" height="1080" alt="mockup" src="https://github.com/user-attachments/assets/7112e2e6-a2a7-46d8-a44d-025f60c7798d" />
+
+# Catarina Guimarães
+
+### Desenvolvedora Full-stack
+
+Meu portfólio pessoal: quem eu sou, o que sei fazer e os projetos que já construí.
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9d325b05-97c1-4e76-bec3-e86f9911b0cd/deploy-status)](https://app.netlify.com/projects/catarinaguimaraes/deploys)
+[![Acessar o site](https://img.shields.io/badge/Portfolio-Acessar_o_site-8f00ff?style=for-the-badge&logo=netlify&logoColor=white)](https://catarinaguimaraes.netlify.app/)
+
+<br />
+
+<img src="docs/screenshots/hero-dark.webp" alt="Página inicial do portfólio no tema escuro, com o nome Catarina Guimarães em gradiente e a foto em destaque" width="860" />
+
+<br />
+<br />
+
+[Sobre o projeto](#-sobre-o-projeto) · [Preview](#-preview) · [Tecnologias](#-tecnologias) · [Estrutura](#-estrutura-do-projeto) · [Como rodar](#-como-rodar) · [Contato](#-contato)
+
 </div>
 
-## 🔗 Acesse meu portfólio: 
- 
-[![Deploy](https://img.shields.io/badge/Deploy-Acessar-7c4dff?style=for-the-badge&logo=netlify&logoColor=white)](https://catarinaguimaraes.netlify.app/)
+---
+
+## ✨ Sobre o projeto
+
+Um site de uma página só, pensado para apresentar meu trabalho de forma simples e direta. Foi construído com foco em **performance**, **acessibilidade** e um visual moderno, com tema claro e escuro.
+
+- 🌗 **Tema claro e escuro**: acompanha o sistema e pode ser trocado no header.
+- 📱 **Responsivo**: funciona do celular ao desktop, com menu próprio para telas pequenas.
+- 📌 **Títulos fixos**: o título de cada seção acompanha a rolagem da página.
+- 🗂️ **Projetos**: dois destaques com demo e código, e um **carrossel** com os demais repositórios do GitHub, buscados no servidor com cache de 1 hora.
+- 💬 **WhatsApp seguro**: o botão de contato passa por uma rota de API, e o número fica só no servidor.
+- 📄 **Currículo**: download direto em PDF.
+- ♿ **Acessibilidade**: link para pular ao conteúdo, foco visível no teclado e respeito à preferência por menos movimento.
+- 🔗 **Prévia ao compartilhar**: a imagem que aparece no WhatsApp e no LinkedIn é gerada por código (Open Graph).
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 📸 Preview
 
-Este portfólio foi desenvolvido com foco em performance, responsividade e design moderno.  
-Aqui estão as principais tecnologias e ferramentas utilizadas:
+<table>
+  <tr>
+    <th align="center">Tema escuro</th>
+    <th align="center">Tema claro</th>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/hero-dark.webp" alt="Página inicial no tema escuro" /></td>
+    <td><img src="docs/screenshots/hero-light.webp" alt="Página inicial no tema claro" /></td>
+  </tr>
+</table>
 
-- ## 🛠️ Tecnologias Utilizadas  
-
-### **Frontend**
-
-[![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/) – Framework React para aplicações web rápidas e otimizadas. </br></br>
-[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/) – Estilização com classes utilitárias e design responsivo. </br></br>
-[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/) – Tipagem estática para maior segurança no código. </br></br>
-[![shadcn/ui](https://img.shields.io/badge/shadcn/ui-000000?style=for-the-badge&logo=radix-ui&logoColor=white)](https://ui.shadcn.com/)  </br></br>
-[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)  </br></br>
-
-### **Integrações**
-[![GitHub API](https://img.shields.io/badge/GitHub_API-181717?style=for-the-badge&logo=github&logoColor=white)](https://docs.github.com/en/rest) – Busca no servidor (com cache de 1 hora) para exibir meus repositórios automaticamente.
-
-### **Ferramentas & Deploy**
-[![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)](https://eslint.org/) – Qualidade do código.</br></br>
-[![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=white)](https://prettier.io/) - Padronização.</br></br>
-[![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://www.netlify.com/) - Deploy rápido e integrado.</br></br> 
-
----
-
-## 📂 Estrutura do Portfólio  
-
-📌 O portfólio foi pensado para ser **simples, direto e interativo**:  
-- 🏠 **Início** — Apresentação e resumo sobre mim.  
-- 👩‍💻 **Sobre e Habilidades** — Formação, foco técnico e tecnologias por categoria.  
-- 💼 **Projetos** — Três destaques e um carrossel com os demais repositórios do GitHub.  
-- 📬 **Contato** — Rodapé com e-mail, LinkedIn e GitHub.  
+<table>
+  <tr>
+    <th align="center">Projetos em destaque</th>
+    <th align="center">No celular</th>
+  </tr>
+  <tr>
+    <td valign="top"><img src="docs/screenshots/projetos.webp" alt="Seção de projetos com o cartão do PRO Lidera Skills" /></td>
+    <td valign="top" align="center"><img src="docs/screenshots/mobile.webp" alt="Página inicial no celular, nos temas escuro e claro" width="360" /></td>
+  </tr>
+</table>
 
 ---
 
-## ⚙️ Como rodar
+## 🧰 Tecnologias
+
+<p>
+  <img src="https://skillicons.dev/icons?i=nextjs,react,typescript,tailwind,figma,github,netlify,vscode" alt="Next.js, React, TypeScript, Tailwind CSS, Figma, GitHub, Netlify e VS Code" />
+</p>
+
+| Camada | O que uso |
+| --- | --- |
+| **Framework** | [Next.js 15](https://nextjs.org/) (App Router) e [React 19](https://react.dev/) |
+| **Linguagem** | [TypeScript](https://www.typescriptlang.org/) |
+| **Estilo** | [Tailwind CSS 4](https://tailwindcss.com/), componentes no estilo [shadcn/ui](https://ui.shadcn.com/) (Radix UI) e tw-animate-css |
+| **Animações** | [Framer Motion](https://www.framer.com/motion/) |
+| **Carrossel** | [Embla Carousel](https://www.embla-carousel.com/) com autoplay |
+| **Tema e ícones** | [next-themes](https://github.com/pacocoursey/next-themes), [react-icons](https://react-icons.github.io/react-icons/) e [lucide](https://lucide.dev/) |
+| **Fontes** | Bricolage Grotesque (títulos) e Figtree (texto), hospedadas no próprio projeto |
+| **Dados** | [API REST do GitHub](https://docs.github.com/en/rest), consultada no servidor |
+| **Qualidade** | [ESLint](https://eslint.org/) |
+| **Deploy** | [Netlify](https://www.netlify.com/) |
+
+---
+
+## 📂 Estrutura do projeto
+
+```text
+.
+├── docs/screenshots/            # imagens usadas neste README
+├── public/
+│   ├── docs/curriculum.pdf      # currículo em PDF
+│   ├── avatar.png               # foto da página inicial
+│   └── *.png                    # capturas dos projetos em destaque
+└── src/
+    ├── app/
+    │   ├── api/whatsapp/        # rota que redireciona para o WhatsApp
+    │   ├── globals.css          # cores, fontes e utilitários de estilo
+    │   ├── layout.tsx           # tema, fontes, header e footer
+    │   ├── opengraph-image.tsx  # imagem de prévia ao compartilhar o link
+    │   └── page.tsx             # monta as seções da página
+    ├── assets/images/           # logo, ícones e imagens das habilidades
+    ├── components/ui/           # Hero, About, Skills, Projects, Header, Footer...
+    ├── data/                    # textos e dados editáveis (site, skills, projetos)
+    ├── fonts/                   # Bricolage Grotesque e Figtree
+    ├── hooks/                   # hooks reutilizáveis
+    ├── lib/                     # busca no GitHub e utilitários
+    └── providers/               # configuração das animações
+```
+
+> 💡 Para trocar textos, links ou os projetos em destaque, edite os arquivos de `src/data/`: `site.ts`, `skills.ts` e `highlightProjects.ts`.
+
+---
+
+## 🚀 Como rodar
+
+**Pré-requisitos:** [Node.js](https://nodejs.org/) 18.18 ou superior, e npm ou pnpm.
 
 ```bash
-npm install
+# 1. Clone o repositório
+git clone https://github.com/CatarinaGuima/Portifolio.git
+cd Portifolio
+
+# 2. Instale as dependências
+npm install        # ou: pnpm install
+
+# 3. Crie o arquivo .env.local (veja a seção abaixo)
+
+# 4. Inicie o servidor de desenvolvimento
 npm run dev
 ```
 
-Variáveis de ambiente (arquivo `.env.local`):
+Depois é só abrir [http://localhost:3000](http://localhost:3000) no navegador.
 
-| Variável | Para que serve |
+### Scripts disponíveis
+
+| Comando | O que faz |
 | --- | --- |
-| `WHATSAPP_NUMBER` | Número usado pelo botão de WhatsApp (ex.: `5596999999999`). Fica só no servidor. |
-| `GITHUB_TOKEN` | Opcional. Aumenta o limite da API do GitHub ao listar os repositórios. |
+| `npm run dev` | Inicia o servidor de desenvolvimento |
+| `npm run build` | Gera a versão de produção |
+| `npm run start` | Roda a versão de produção gerada pelo build |
+| `npm run lint` | Verifica o código com o ESLint |
 
-Textos, links e projetos em destaque ficam em `src/data/` (`site.ts` e `highlightProjects.ts`).
+### 🔐 Variáveis de ambiente
+
+Crie um arquivo `.env.local` na raiz do projeto:
+
+```bash
+# Número do WhatsApp com código do país e DDD, só dígitos (ex.: 5511999999999)
+WHATSAPP_NUMBER=
+
+# Opcional: token do GitHub para aumentar o limite de requisições
+GITHUB_TOKEN=
+```
+
+| Variável | Obrigatória | Para que serve |
+| --- | :---: | --- |
+| `WHATSAPP_NUMBER` | Sim | Número usado pelo botão de WhatsApp. Fica só no servidor. Sem ela, o botão responde com erro. |
+| `GITHUB_TOKEN` | Não | Aumenta o limite da API do GitHub ao listar os repositórios no carrossel. |
+
+### 🌐 Deploy
+
+O site é publicado na [Netlify](https://www.netlify.com/), com deploy automático a cada push na branch principal. Ao configurar o projeto lá, cadastre as mesmas variáveis de ambiente em *Site configuration → Environment variables*.
 
 ---
 
-## 📬 Contato
-Se quiser trocar ideias, colaborar ou apenas bater um papo, você pode me encontrar em:
+## 💬 Contato
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077b5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/catarina-guimaraes/)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/catarinaguimaraes)
+Quer trocar ideias, colaborar ou só bater um papo? Me encontre por aqui:
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077b5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/catarinaguimaraess/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/CatarinaGuima)
+[![Portfólio](https://img.shields.io/badge/Portfolio-8f00ff?style=for-the-badge&logo=netlify&logoColor=white)](https://catarinaguimaraes.netlify.app/)
+
+Sugestões e melhorias são muito bem-vindas! Fique à vontade para abrir uma [issue](https://github.com/CatarinaGuima/Portifolio/issues).
 
 ---
 
-## 🧩 Feedback
-Fique à vontade para enviar sugestões e melhorias! 💬
-
----
+<div align="center">
 
 **Feito com 💜 por [Catarina Guimarães](https://catarinaguimaraes.netlify.app/)**
+
+</div>
