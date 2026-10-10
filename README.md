@@ -35,7 +35,7 @@ Aqui estão as principais tecnologias e ferramentas utilizadas:
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)  </br></br>
 
 ### **Integrações**
-[![GitHub API](https://img.shields.io/badge/GitHub_API-181717?style=for-the-badge&logo=github&logoColor=white)](https://docs.github.com/en/rest) – Consumo de dados para exibir meus repositórios automaticamente.
+[![GitHub API](https://img.shields.io/badge/GitHub_API-181717?style=for-the-badge&logo=github&logoColor=white)](https://docs.github.com/en/rest) – Busca no servidor (com cache de 1 hora) para exibir meus repositórios automaticamente.
 
 ### **Ferramentas & Deploy**
 [![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)](https://eslint.org/) – Qualidade do código.</br></br>
@@ -49,8 +49,8 @@ Aqui estão as principais tecnologias e ferramentas utilizadas:
 📌 O portfólio foi pensado para ser **simples, direto e interativo**:  
 - 🏠 **Início** — Apresentação e resumo sobre mim.  
 - 👩‍💻 **Sobre e Habilidades** — Formação, foco técnico e tecnologias por categoria.  
-- 💼 **Projetos** — Três destaques e a lista dos demais repositórios do GitHub, buscada no servidor.  
-- 📬 **Contato** — E-mail, WhatsApp, LinkedIn, GitHub e currículo.  
+- 💼 **Projetos** — Três destaques e um carrossel com os demais repositórios do GitHub.  
+- 📬 **Contato** — Rodapé com e-mail, LinkedIn e GitHub.  
 
 ---
 
@@ -68,7 +68,7 @@ Variáveis de ambiente (arquivo `.env.local`):
 | `WHATSAPP_NUMBER` | Número usado pelo botão de WhatsApp (ex.: `5596999999999`). Fica só no servidor. |
 | `GITHUB_TOKEN` | Opcional. Aumenta o limite da API do GitHub ao listar os repositórios. |
 
-Os textos, links e projetos em destaque ficam em `src/data/` (`site.ts`, `skills.ts`, `highlightProjects.ts`).
+Textos, links e projetos em destaque ficam em `src/data/` (`site.ts` e `highlightProjects.ts`).
 
 ---
 

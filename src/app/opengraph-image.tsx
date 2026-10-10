@@ -17,8 +17,10 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px 80px",
-          background: "#130c26",
-          color: "#f1ecff",
+          backgroundColor: "#09090b",
+          backgroundImage:
+            "radial-gradient(circle at 88% 12%, rgba(143,0,255,0.55), rgba(9,9,11,0) 55%), radial-gradient(circle at 70% 95%, rgba(0,141,255,0.35), rgba(9,9,11,0) 50%)",
+          color: "#fafafa",
         }}
       >
         <div
@@ -43,8 +45,8 @@ export default function OpengraphImage() {
             fontSize: 38,
           }}
         >
-          <span style={{ color: "#b794ff", fontWeight: 700 }}>{site.role}</span>
-          <span style={{ color: "#a89fcb" }}>
+          <span style={{ color: "#a6d3ff", fontWeight: 700 }}>{site.role}</span>
+          <span style={{ color: "#a1a1aa" }}>
             {site.url.replace("https://", "")}
           </span>
         </div>

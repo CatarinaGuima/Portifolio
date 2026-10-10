@@ -3,11 +3,11 @@
 import { useState } from "react";
 import { FiGithub } from "react-icons/fi";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import type { Repo } from "@/lib/github";
+import type { Project } from "@/lib/github";
 
 const INITIAL_COUNT = 6;
 
-export default function RepoList({ repos }: { repos: Repo[] }) {
+export default function RepoList({ repos }: { repos: Project[] }) {
   const [expanded, setExpanded] = useState(false);
   const visible = expanded ? repos : repos.slice(0, INITIAL_COUNT);
   const hiddenCount = repos.length - INITIAL_COUNT;
@@ -23,7 +23,7 @@ export default function RepoList({ repos }: { repos: Repo[] }) {
             <div className="min-w-0">
               <h4 className="font-display text-xl font-semibold">
                 <a
-                  href={repo.url}
+                  href={repo.repo}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="link-line"
@@ -37,15 +37,14 @@ export default function RepoList({ repos }: { repos: Repo[] }) {
                 </p>
               )}
               <p className="mt-2 text-sm text-muted-foreground">
-                {repo.language ? `${repo.language}, ` : ""}
-                atualizado em {repo.updatedLabel}
+                Atualizado em {repo.updatedLabel}
               </p>
             </div>
 
             <div className="flex items-start gap-5 text-sm font-semibold sm:pt-1">
-              {repo.homepage && (
+              {repo.demo && (
                 <a
-                  href={repo.homepage}
+                  href={repo.demo}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="link-line inline-flex items-center gap-1.5"
@@ -56,7 +55,7 @@ export default function RepoList({ repos }: { repos: Repo[] }) {
                 </a>
               )}
               <a
-                href={repo.url}
+                href={repo.repo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link-line inline-flex items-center gap-1.5"

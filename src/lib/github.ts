@@ -1,10 +1,12 @@
-export type Repo = {
-  id: number;
+export type Project = {
+  id: string;
   title: string;
-  description: string | null;
-  language: string | null;
-  url: string;
-  homepage: string | null;
+  description: string;
+  techs: string[];
+  repo: string;
+  demo?: string;
+  image?: string;
+  stars: number;
   updatedLabel: string;
 };
 
@@ -15,12 +17,14 @@ type GithubRepo = {
   html_url: string;
   homepage: string | null;
   language: string | null;
+  stargazers_count: number;
   fork: boolean;
   archived: boolean;
   pushed_at: string;
+  topics?: string[];
 };
 
-function formatRepoName(name: string): string {
+function formatProjectName(name: string): string {
   return name
     .split(/[-_]/)
     .filter(Boolean)
@@ -35,14 +39,15 @@ const monthYear = new Intl.DateTimeFormat("pt-BR", {
 });
 
 /**
- * Busca os repositórios públicos no servidor (com cache de 1 hora).
+ * Busca os repositórios públicos no servidor, com cache de 1 hora.
  * Assim a API do GitHub não é chamada a cada visita e não há limite de
  * requisições por visitante. Defina GITHUB_TOKEN no ambiente para um limite maior.
+ * `excludeUrls` remove da lista os projetos que já aparecem em destaque.
  */
-export async function getRepos(
+export async function getProjects(
   user: string,
   excludeUrls: string[] = [],
-): Promise<{ repos: Repo[]; failed: boolean }> {
+): Promise<{ projects: Project[]; failed: boolean }> {
   const excluded = new Set(excludeUrls.map((url) => url.toLowerCase()));
 
   try {
@@ -59,29 +64,32 @@ export async function getRepos(
       },
     );
 
-    if (!res.ok) return { repos: [], failed: true };
+    if (!res.ok) return { projects: [], failed: true };
 
     const data = (await res.json()) as GithubRepo[];
 
-    const repos = data
+    const projects = data
       .filter(
         (repo) =>
           !repo.fork &&
           !repo.archived &&
           !excluded.has(repo.html_url.toLowerCase()),
       )
-      .map<Repo>((repo) => ({
-        id: repo.id,
-        title: formatRepoName(repo.name),
-        description: repo.description,
-        language: repo.language,
-        url: repo.html_url,
-        homepage: repo.homepage || null,
+      .map<Project>((repo) => ({
+        id: String(repo.id),
+        title: formatProjectName(repo.name),
+        description: repo.description || "Sem descrição disponível.",
+        techs: Array.from(
+          new Set([...(repo.language ? [repo.language] : []), ...(repo.topics ?? [])]),
+        ),
+        repo: repo.html_url,
+        demo: repo.homepage || undefined,
+        stars: repo.stargazers_count,
         updatedLabel: monthYear.format(new Date(repo.pushed_at)),
       }));
 
-    return { repos, failed: false };
+    return { projects, failed: false };
   } catch {
-    return { repos: [], failed: true };
+    return { projects: [], failed: true };
   }
 }
