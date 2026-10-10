@@ -81,7 +81,7 @@ export default function Header() {
                     aria-current={active === link.href ? "location" : undefined}
                     className={`rounded-full px-4 py-2 text-[0.95rem] font-medium transition-colors ${
                       active === link.href
-                        ? "bg-secondary text-foreground"
+                        ? "bg-text-primary/10 text-text-primary"
                         : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
@@ -121,7 +121,7 @@ export default function Header() {
                   onClick={() => setMenuOpen(false)}
                   aria-current={active === link.href ? "location" : undefined}
                   className={`display block py-3 text-3xl ${
-                    active === link.href ? "text-primary" : ""
+                    active === link.href ? "text-text-primary" : ""
                   }`}
                 >
                   {link.label}

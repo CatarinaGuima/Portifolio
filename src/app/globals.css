@@ -1,96 +1,136 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
+/* Variante dark (Tailwind v4) */
 @custom-variant dark (&:is(.dark *));
 
 /* =========================================================
-   Sistema visual
-   Claro: "papel lilás" — fundo lavanda bem claro, tinta violeta escura.
-   Escuro: "ameixa da meia-noite" — fundo roxo profundo, nunca preto puro.
-   O acento continua sendo o violeta da marca (#8f00ff), ajustado
-   para ter contraste de leitura em cada tema.
+  Design tokens - modo claro
+  Mesma identidade de antes (violeta #8f00ff e azul #a6d3ff),
+  com fundo e bordas ajustados para os cartões se destacarem
+  e textos com contraste de leitura confortável.
    ========================================================= */
 :root {
   --radius: 0.75rem;
 
-  --background: #f7f4ff;
-  --foreground: #1b1238;
+  --background: #f1f1f5;
+  --foreground: #09090b;
 
   --card: #ffffff;
-  --card-foreground: #1b1238;
+  --card-foreground: #09090b;
 
   --popover: #ffffff;
-  --popover-foreground: #1b1238;
+  --popover-foreground: #09090b;
 
-  --primary: #6b21e8;
-  --primary-foreground: #ffffff;
+  --primary: #09090b;
+  --primary-foreground: #fafafa;
 
-  --secondary: #ece6ff;
-  --secondary-foreground: #1b1238;
+  --secondary: #e8e8ef;
+  --secondary-foreground: #09090b;
 
-  --muted: #ece6ff;
-  --muted-foreground: #5b5380;
+  --muted: #e8e8ef;
+  --muted-foreground: #5f5f6b;
 
-  --accent: #ece6ff;
-  --accent-foreground: #1b1238;
+  --accent: #e8e8ef;
+  --accent-foreground: #09090b;
 
-  --destructive: #d4183d;
+  --destructive: #e7000b;
 
-  --border: #ddd5f3;
-  --input: #ddd5f3;
-  --ring: #6b21e8;
+  --border: #d9d9e2;
+  --input: #d9d9e2;
+  --ring: #8f00ff;
 
-  /* Cor de apoio usada em detalhes (contorno da foto, seleção de texto) */
-  --sky: #8fc4f5;
-  /* Fundo da foto no recorte duotone */
-  --duotone: #d9c9ff;
+  /* Texto */
+  --text-primary: #8f00ff;
+  --text-secondary: #a6d3ff;
+  --text-subtitle: #4f5d75;
+  --text-paragraph: #2d3142;
 
-  /* Mantidos porque o componente Button usa a variante "whatsapp" */
-  --chart-1: #6b21e8;
-  --chart-2: #0f8a5f;
-  --chart-3: #0a6a49;
-  --chart-4: #b7791f;
-  --chart-5: #c026d3;
+  /* Gradiente da marca (títulos, nome, detalhes) */
+  --grad-a: #8f00ff;
+  --grad-b: #1f6feb;
+
+  /* Charts (o verde do botão de WhatsApp usa chart-2 e chart-3) */
+  --chart-1: #f54900;
+  --chart-2: #007a6c;
+  --chart-3: #00574d;
+  --chart-4: #ffb900;
+  --chart-5: #ad46ff;
+
+  /* Sidebar */
+  --sidebar: #fafafa;
+  --sidebar-foreground: #09090b;
+  --sidebar-primary: #09090b;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #f4f4f5;
+  --sidebar-accent-foreground: #09090b;
+  --sidebar-border: #e4e4e7;
+  --sidebar-ring: #9f9fa9;
+
+  --color-theme: #d5d5d5;
 }
 
+/* =========================================================
+  Tema dark
+   ========================================================= */
 .dark {
-  --background: #130c26;
-  --foreground: #f1ecff;
+  --background: #09090b;
+  --foreground: #fafafa;
 
-  --card: #1b1236;
-  --card-foreground: #f1ecff;
+  --card: #1a1a1d;
+  --card-foreground: #fafafa;
 
-  --popover: #1b1236;
-  --popover-foreground: #f1ecff;
+  --popover: #09090b;
+  --popover-foreground: #fafafa;
 
-  --primary: #b794ff;
-  --primary-foreground: #130c26;
+  --primary: #e4e4e7;
+  --primary-foreground: #09090b;
 
-  --secondary: #241a45;
-  --secondary-foreground: #f1ecff;
+  --secondary: #27272a;
+  --secondary-foreground: #fafafa;
 
-  --muted: #241a45;
-  --muted-foreground: #a89fcb;
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
 
-  --accent: #241a45;
-  --accent-foreground: #f1ecff;
+  --accent: #27272a;
+  --accent-foreground: #fafafa;
 
-  --destructive: #ff7a93;
+  --destructive: #ff6467;
 
-  --border: #2f2358;
-  --input: #2f2358;
-  --ring: #b794ff;
+  --border: #2d2d33;
+  --input: #3a3a3a;
+  --ring: #a6d3ff;
 
-  --sky: #a6d3ff;
-  --duotone: #b794ff;
+  /* Texto (modo escuro) */
+  --text-primary: #a6d3ff;
+  --text-secondary: #8f00ff;
+  --text-subtitle: #cbd5e1;
+  --text-paragraph: #e2e8f0;
 
-  --chart-1: #b794ff;
-  --chart-2: #3ecf9c;
-  --chart-3: #28a87c;
-  --chart-4: #e5b567;
-  --chart-5: #e879f9;
+  --grad-a: #a6d3ff;
+  --grad-b: #b57bff;
+
+  --chart-1: #1f5ba3;
+  --chart-2: #00bc7d;
+  --chart-3: #00a36c;
+  --chart-4: #ad46ff;
+  --chart-5: #ff2056;
+
+  --sidebar: #09090b;
+  --sidebar-foreground: #fafafa;
+  --sidebar-primary: #1447e6;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #27272a;
+  --sidebar-accent-foreground: #fafafa;
+  --sidebar-border: #2d2d2d;
+  --sidebar-ring: #71717b;
+
+  --color-theme: #dedede;
 }
 
+/* =========================================================
+  Mapeamento para Tailwind
+   ========================================================= */
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -98,50 +138,86 @@
   --radius-xl: calc(var(--radius) + 4px);
 
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-heading), var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+  var(--font-heading), var(--font-body), ui-sans-serif, system-ui, sans-serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
+
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+
   --color-destructive: var(--destructive);
+
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-sky: var(--sky);
-  --color-duotone: var(--duotone);
+
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-subtitle: var(--text-subtitle);
+  --color-text-paragraph: var(--text-paragraph);
+
+  --color-grad-a: var(--grad-a);
+  --color-grad-b: var(--grad-b);
+
+  --color-color-theme: var(--color-theme);
 }
 
 /* =========================================================
-   Base
+  Base
    ========================================================= */
 * {
   box-sizing: border-box;
 }
 
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+}
+
 html {
   scroll-behavior: smooth;
+  background: var(--background);
+  color: var(--foreground);
   -webkit-text-size-adjust: 100%;
+  /* Barra de rolagem na cor da marca */
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-primary) transparent;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   font-size: 1.0625rem;
   line-height: 1.65;
@@ -149,19 +225,30 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* O brilho rosa, violeta e azul de fundo fica fixo enquanto a página rola */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url('/background-hero.svg') center / cover no-repeat;
+}
+
 ::selection {
-  background: var(--sky);
-  color: #1b1238;
+  background: #a6d3ff;
+  color: #09090b;
 }
 
 :focus-visible {
-  outline: 2px solid var(--ring);
+  outline: 2px solid var(--text-primary);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
 /* Âncoras não ficam escondidas atrás do header fixo */
-section[id] {
+section[id],
+footer[id] {
   scroll-margin-top: 4.5rem;
 }
 
@@ -169,6 +256,7 @@ section[id] {
   html {
     scroll-behavior: auto;
   }
+
   *,
   *::before,
   *::after {
@@ -179,56 +267,81 @@ section[id] {
 }
 
 /* =========================================================
-   Utilitários do projeto
+  Utilitários do projeto
    ========================================================= */
 @utility page-width {
   width: 100%;
-  max-width: 70rem;
+  max-width: 72rem;
   margin-inline: auto;
   padding-inline: 1.25rem;
+
   @media (min-width: 40rem) {
     padding-inline: 2rem;
   }
 }
 
-/* Títulos: Bricolage Grotesque em largura reduzida, mais firme e compacta */
+/* Fonte dos títulos: Bricolage Grotesque em largura reduzida */
 @utility display {
-  font-family: var(--font-heading), var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-family:
+    var(--font-heading), var(--font-body), ui-sans-serif, system-ui, sans-serif;
   font-stretch: 85%;
   font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
 }
 
-/* Único momento de movimento da página: o nome engrossa em onda ao carregar */
+/* Texto com o gradiente violeta e azul da marca.
+   O padding evita cortar a base das letras (g, j, p). */
+@utility text-gradient {
+  background-image: linear-gradient(100deg, var(--grad-a), var(--grad-b));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-bottom: 0.1em;
+}
+
+/* Cartão de vidro: fundo translúcido com desfoque */
+@utility glass {
+  background-color: color-mix(in srgb, var(--card) 70%, transparent);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+}
+
+/* O único movimento da página ao carregar: o nome engrossa em onda */
 @keyframes weight-wave {
   0% {
     font-weight: 250;
   }
+
   45% {
     font-weight: 800;
   }
+
   100% {
-    font-weight: 650;
+    font-weight: 700;
   }
 }
 
 .hero-letter {
   display: inline-block;
-  font-weight: 650;
+  font-weight: 700;
   animation: weight-wave 1.5s cubic-bezier(0.3, 0.7, 0.2, 1) both;
   animation-delay: calc(var(--i) * 55ms + 120ms);
 }
 
-/* Link sublinhado de forma discreta, usado em textos corridos e listas */
+/* Link com sublinhado discreto */
 .link-line {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.25em;
   text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
-  transition: text-decoration-color 0.2s, color 0.2s;
+  transition:
+    text-decoration-color 0.2s,
+    color 0.2s;
 }
+
 .link-line:hover {
   text-decoration-color: currentColor;
-  color: var(--primary);
+  color: var(--text-primary);
 }

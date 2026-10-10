@@ -1,13 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
+// @ts-expect-error - CSS imports are handled by Next.js
 import "./globals.css";
 import Header from "@/components/ui/Header";
 import Footer from "@/components/ui/Footer";
+import MotionProvider from "@/providers/MotionProvider";
 import { site } from "@/data/site";
 
-// Fontes hospedadas no próprio projeto: sem requisição extra ao Google e sem
-// risco de o build falhar por rede.
+// Fontes hospedadas no próprio projeto: sem requisição extra ao Google
 const heading = localFont({
   src: "../fonts/BricolageGrotesque-latin-wdth.woff2",
   variable: "--font-heading",
@@ -24,7 +25,7 @@ const body = localFont({
 });
 
 const description =
-  "Portfólio de Catarina Guimarães, desenvolvedora front-end com React, Next.js e TypeScript. Veja projetos, habilidades e formas de contato.";
+  "Portfólio de Catarina Guimarães, desenvolvedora full-stack com React, Next.js e TypeScript. Veja projetos, habilidades e formas de contato.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -51,8 +52,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f7f4ff" },
-    { media: "(prefers-color-scheme: dark)", color: "#130c26" },
+    { media: "(prefers-color-scheme: light)", color: "#f1f1f5" },
+    { media: "(prefers-color-scheme: dark)", color: "#09090b" },
   ],
 };
 
@@ -69,15 +70,17 @@ export default function RootLayout({
     >
       <body className="min-h-screen">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <a
-            href="#conteudo"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
-          >
-            Pular para o conteúdo
-          </a>
-          <Header />
-          {children}
-          <Footer />
+          <MotionProvider>
+            <a
+              href="#conteudo"
+              className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-60 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+            >
+              Pular para o conteúdo
+            </a>
+            <Header />
+            {children}
+            <Footer />
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>

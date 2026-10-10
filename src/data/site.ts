@@ -2,7 +2,7 @@ export const site = {
   name: "Catarina Guimarães",
   firstName: "Catarina",
   lastName: "Guimarães",
-  role: "Desenvolvedora Front-end",
+  role: "Desenvolvedora Full-stack",
   url: "https://catarinaguimaraes.netlify.app",
   email: "catarina.guimaraes15@gmail.com",
   githubUser: "CatarinaGuima",
@@ -11,8 +11,6 @@ export const site = {
   cv: "/docs/curriculum.pdf",
   cvFileName: "Catarina_Guimaraes_CV.pdf",
   whatsappMessage: "Olá Catarina! Vi seu portfólio e gostaria de conversar sobre.",
-  summary:
-    "Crio experiências digitais performáticas e acessíveis com React, Next.js e TypeScript, unindo design intuitivo e código eficiente.",
 } as const;
 
 export const whatsappHref = `/api/whatsapp?message=${encodeURIComponent(
