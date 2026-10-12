@@ -92,7 +92,7 @@ export default function Hero() {
                 alt={`Retrato de ${site.name}`}
                 fill
                 priority
-                quality={90}
+                quality={75}
                 sizes="(min-width: 1024px) 20rem, (min-width: 768px) 16rem, 13rem"
                 className="object-cover transition-transform duration-500 hover:scale-105"
               />

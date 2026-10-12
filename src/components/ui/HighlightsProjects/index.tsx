@@ -34,18 +34,19 @@ export default function HighlightsProjectsCard({
       {/* Imagem */}
       <div
         className={cn(
-          "relative h-48 w-full shrink-0 overflow-hidden",
-          featured && "sm:h-auto sm:min-h-72 sm:w-[46%]",
+          "relative aspect-2/1 w-full shrink-0 overflow-hidden",
+          featured && "sm:aspect-auto sm:min-h-72 sm:w-[46%]",
         )}
       >
         <Image
           src={imageUrl}
           alt={`Captura de tela do projeto ${title}`}
           fill
-          className="object-cover object-left-top transition-transform duration-500 group-hover:scale-105"
+          loading="eager"
+          className="object-cover object-top-left transition-transform duration-500 group-hover:scale-105"
           sizes="(min-width: 768px) 420px, 100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
       </div>
 
       {/* Conteúdo */}
