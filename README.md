@@ -6,8 +6,9 @@
 
 Meu portfólio pessoal: quem eu sou, o que sei fazer e os projetos que já construí.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9d325b05-97c1-4e76-bec3-e86f9911b0cd/deploy-status)](https://app.netlify.com/projects/catarinaguimaraes/deploys)
-[![Acessar o site](https://img.shields.io/badge/Portfolio-Acessar_o_site-8f00ff?style=for-the-badge&logo=netlify&logoColor=white)](https://catarinaguimaraes.netlify.app/)
+[![Deploy na Vercel](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/catarinaguimas-projects/portifolio)
+<br/>
+[![Acessar o site](https://img.shields.io/badge/Portfolio-Acessar_o_site-8f00ff?style=for-the-badge&logo=vercel&logoColor=white)](https://portifolio-catarina-guimaraes.vercel.app/)
 
 <br />
 
@@ -66,12 +67,12 @@ Um site de uma página só, pensado para apresentar meu trabalho de forma simple
 ## 🧰 Tecnologias
 
 <p>
-  <img src="https://skillicons.dev/icons?i=nextjs,react,typescript,tailwind,figma,github,netlify,vscode" alt="Next.js, React, TypeScript, Tailwind CSS, Figma, GitHub, Netlify e VS Code" />
+ <img src="https://skillicons.dev/icons?i=nextjs,react,typescript,tailwind,figma,github,vercel,vscode" alt="Next.js, React, TypeScript, Tailwind CSS, Figma, GitHub, Vercel e VS Code" />
 </p>
 
 | Camada | O que uso |
 | --- | --- |
-| **Framework** | [Next.js 15](https://nextjs.org/) (App Router) e [React 19](https://react.dev/) |
+| **Framework** | [Next.js 16.3.8](https://nextjs.org/) (App Router) e [React 19](https://react.dev/) |
 | **Linguagem** | [TypeScript](https://www.typescriptlang.org/) |
 | **Estilo** | [Tailwind CSS 4](https://tailwindcss.com/), componentes no estilo [shadcn/ui](https://ui.shadcn.com/) (Radix UI) e tw-animate-css |
 | **Animações** | [Framer Motion](https://www.framer.com/motion/) |
@@ -80,7 +81,7 @@ Um site de uma página só, pensado para apresentar meu trabalho de forma simple
 | **Fontes** | Bricolage Grotesque (títulos) e Figtree (texto), hospedadas no próprio projeto |
 | **Dados** | [API REST do GitHub](https://docs.github.com/en/rest), consultada no servidor |
 | **Qualidade** | [ESLint](https://eslint.org/) |
-| **Deploy** | [Netlify](https://www.netlify.com/) |
+| **Deploy** | [Vercel](https://vercel.com) |
 
 ---
 
@@ -161,7 +162,7 @@ GITHUB_TOKEN=
 
 ### 🌐 Deploy
 
-O site é publicado na [Netlify](https://www.netlify.com/), com deploy automático a cada push na branch principal. Ao configurar o projeto lá, cadastre as mesmas variáveis de ambiente em *Site configuration → Environment variables*.
+O site é publicado na [Vercel](https://vercel.com/), com deploy automático a cada push na branch principal. As variáveis de ambiente devem ser configuradas em **Project Settings → Environment Variables**.
 
 ---
 
@@ -171,7 +172,7 @@ Quer trocar ideias, colaborar ou só bater um papo? Me encontre por aqui:
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077b5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/catarinaguimaraess/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/CatarinaGuima)
-[![Portfólio](https://img.shields.io/badge/Portfolio-8f00ff?style=for-the-badge&logo=netlify&logoColor=white)](https://catarinaguimaraes.netlify.app/)
+[![Portfólio](https://img.shields.io/badge/Portfolio-8f00ff?style=for-the-badge&logo=vercel&logoColor=white)](https://portifolio-catarina-guimaraes.vercel.app/)
 
 Sugestões e melhorias são muito bem-vindas! Fique à vontade para abrir uma [issue](https://github.com/CatarinaGuima/Portifolio/issues).
 
@@ -179,6 +180,6 @@ Sugestões e melhorias são muito bem-vindas! Fique à vontade para abrir uma [i
 
 <div align="center">
 
-**Feito com 💜 por [Catarina Guimarães](https://catarinaguimaraes.netlify.app/)**
+**Feito com 💜 por [Catarina Guimarães](https://portifolio-catarina-guimaraes.vercel.app/)**
 
 </div>
